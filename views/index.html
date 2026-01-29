@@ -18,7 +18,6 @@
             'primary-light': '#e8424f',
             surface: '#ffffff',
             'surface-alt': '#fafafa',
-            'surface-elevated': '#ffffff',
             border: '#e5e5e5',
             'border-light': '#f0f0f0',
             'text-primary': '#1a1a1a',
@@ -52,15 +51,63 @@
       z-index: 9999;
     }
 
+    /* Left panel styling */
+    .left-panel {
+      background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
+      position: relative;
+    }
+
+    .left-panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(180deg, transparent, #e5e5e5, transparent);
+    }
+
     /* Logo container with red background */
     .logo-container {
       background: linear-gradient(135deg, #c01625 0%, #9a111e 100%);
-      padding: 16px 32px;
+      padding: 14px 28px;
       border-radius: 12px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       box-shadow: 0 4px 24px rgba(192, 22, 37, 0.25);
+    }
+
+    /* Stat card styling */
+    .stat-card {
+      background: white;
+      border: 1px solid #e5e5e5;
+      border-radius: 16px;
+      padding: 20px 24px;
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+      border-color: #c01625;
+      box-shadow: 0 8px 24px rgba(192, 22, 37, 0.08);
+      transform: translateY(-2px);
+    }
+
+    /* Service tag styling */
+    .service-tag {
+      background: #fafafa;
+      border: 1px solid #e5e5e5;
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 13px;
+      color: #666666;
+      transition: all 0.2s ease;
+    }
+
+    .service-tag:hover {
+      background: white;
+      border-color: #c01625;
+      color: #c01625;
     }
 
     /* Elegant form styling */
@@ -86,31 +133,6 @@
       color: #999999;
     }
 
-    /* Section styling */
-    .form-section {
-      position: relative;
-    }
-
-    .section-number {
-      position: absolute;
-      left: -60px;
-      top: 0;
-      font-family: 'Google Sans Display', sans-serif;
-      font-size: 64px;
-      font-weight: 700;
-      color: #f5f5f5;
-      line-height: 1;
-      user-select: none;
-    }
-
-    @media (max-width: 1024px) {
-      .section-number {
-        position: static;
-        font-size: 48px;
-        margin-bottom: 8px;
-      }
-    }
-
     /* Checkbox cards */
     .checkbox-card {
       position: relative;
@@ -133,10 +155,10 @@
 
     .checkbox-card input[type="checkbox"] {
       appearance: none;
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
       border: 2px solid #d0d0d0;
-      border-radius: 6px;
+      border-radius: 5px;
       transition: all 0.2s ease;
       position: relative;
       cursor: pointer;
@@ -151,10 +173,10 @@
     .checkbox-card input[type="checkbox"]:checked::after {
       content: '';
       position: absolute;
-      left: 6px;
-      top: 2px;
-      width: 5px;
-      height: 10px;
+      left: 5px;
+      top: 1px;
+      width: 4px;
+      height: 9px;
       border: solid white;
       border-width: 0 2px 2px 0;
       transform: rotate(45deg);
@@ -214,7 +236,6 @@
     .delay-3 { animation-delay: 0.3s; }
     .delay-4 { animation-delay: 0.4s; }
     .delay-5 { animation-delay: 0.5s; }
-    .delay-6 { animation-delay: 0.6s; }
 
     /* Loading spinner */
     .loading-spinner {
@@ -237,14 +258,8 @@
     }
 
     @keyframes scaleIn {
-      from {
-        opacity: 0;
-        transform: scale(0.5);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
+      from { opacity: 0; transform: scale(0.5); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     /* Select dropdown styling */
@@ -252,95 +267,148 @@
       appearance: none;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23666666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
       background-repeat: no-repeat;
-      background-position: right 16px center;
+      background-position: right 14px center;
       background-size: 16px;
-      padding-right: 48px;
+      padding-right: 44px;
     }
 
-    /* Decorative elements */
-    .hero-decoration {
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(192, 22, 37, 0.03) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
+    /* Section divider */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #e5e5e5, transparent);
     }
 
-    /* Card styling */
+    /* Sticky left panel */
+    @media (min-width: 1024px) {
+      .left-content {
+        position: sticky;
+        top: 40px;
+      }
+    }
+
+    /* Form card */
     .form-card {
       background: #ffffff;
       border: 1px solid #e5e5e5;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 8px 40px rgba(0, 0, 0, 0.04);
     }
-
-    /* Divider */
-    .section-divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #e5e5e5, transparent);
-    }
   </style>
 </head>
 <body class="bg-white text-text-primary min-h-screen">
 
-  <!-- Hero Section -->
-  <header class="relative overflow-hidden pt-12 pb-8 md:pt-20 md:pb-12">
-    <div class="hero-decoration -top-64 -right-64"></div>
-    <div class="hero-decoration -bottom-64 -left-64"></div>
+  <div class="min-h-screen flex flex-col lg:flex-row">
 
-    <div class="container mx-auto px-6 relative">
-      <div class="max-w-4xl mx-auto">
-        <div class="flex flex-col items-center text-center">
-          <!-- Logo with red background container -->
-          <div class="animate-in logo-container mb-10">
-            <img src="/excellent-logo-main.png" alt="Excellent Publicity" class="h-10 md:h-12">
+    <!-- Left Panel - Company Info -->
+    <aside class="left-panel w-full lg:w-[420px] xl:w-[480px] flex-shrink-0 p-8 lg:p-12">
+      <div class="left-content">
+        <!-- Logo -->
+        <div class="animate-in mb-12">
+          <div class="logo-container">
+            <img src="/excellent-logo-main.png" alt="Excellent Publicity" class="h-8 md:h-10">
           </div>
+        </div>
 
-          <h1 class="animate-in delay-1 font-display text-4xl md:text-6xl lg:text-7xl font-bold text-text-primary tracking-tight mb-6">
-            Campaign Brief
+        <!-- Headline -->
+        <div class="animate-in delay-1 mb-8">
+          <h1 class="font-display text-3xl xl:text-4xl font-bold text-text-primary leading-tight mb-4">
+            Let's Create Your Next Big Campaign
           </h1>
-
-          <p class="animate-in delay-2 text-text-secondary text-lg md:text-xl max-w-xl leading-relaxed">
-            Tell us about your brand and campaign goals. Let's create something extraordinary together.
+          <p class="text-text-secondary leading-relaxed">
+            India's leading outdoor advertising agency. We transform brand visions into memorable outdoor experiences across 500+ cities.
           </p>
         </div>
+
+        <!-- Stats -->
+        <div class="animate-in delay-2 grid grid-cols-2 gap-4 mb-8">
+          <div class="stat-card">
+            <div class="text-2xl xl:text-3xl font-bold text-primary mb-1">500+</div>
+            <div class="text-sm text-text-tertiary">Cities Covered</div>
+          </div>
+          <div class="stat-card">
+            <div class="text-2xl xl:text-3xl font-bold text-primary mb-1">10K+</div>
+            <div class="text-sm text-text-tertiary">Campaigns</div>
+          </div>
+          <div class="stat-card">
+            <div class="text-2xl xl:text-3xl font-bold text-primary mb-1">15+</div>
+            <div class="text-sm text-text-tertiary">Years Experience</div>
+          </div>
+          <div class="stat-card">
+            <div class="text-2xl xl:text-3xl font-bold text-primary mb-1">1000+</div>
+            <div class="text-sm text-text-tertiary">Happy Clients</div>
+          </div>
+        </div>
+
+        <!-- Services -->
+        <div class="animate-in delay-3 mb-8">
+          <h3 class="text-xs font-medium text-text-tertiary uppercase tracking-widest mb-4">Our Services</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="service-tag">Billboards</span>
+            <span class="service-tag">Transit Media</span>
+            <span class="service-tag">Mall Activations</span>
+            <span class="service-tag">Digital OOH</span>
+            <span class="service-tag">Events</span>
+            <span class="service-tag">BTL Solutions</span>
+          </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="animate-in delay-4 pt-8 border-t border-border-light">
+          <h3 class="text-xs font-medium text-text-tertiary uppercase tracking-widest mb-4">Get in Touch</h3>
+          <div class="space-y-3">
+            <a href="mailto:hello@excellentpublicity.com" class="flex items-center text-text-secondary hover:text-primary transition-colors">
+              <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+              <span class="text-sm">hello@excellentpublicity.com</span>
+            </a>
+            <a href="tel:+919876543210" class="flex items-center text-text-secondary hover:text-primary transition-colors">
+              <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+              <span class="text-sm">+91 98765 43210</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Footer for mobile -->
+        <div class="lg:hidden mt-8 pt-8 border-t border-border-light">
+          <p class="text-text-tertiary text-xs">&copy; 2024 Excellent Publicity. All rights reserved.</p>
+        </div>
       </div>
-    </div>
-  </header>
+    </aside>
 
-  <!-- About Section -->
-  <section class="container mx-auto px-6 py-8 md:py-12">
-    <div class="max-w-2xl mx-auto text-center animate-in delay-3">
-      <p class="text-text-secondary leading-relaxed text-base md:text-lg">
-        <span class="text-primary font-medium">Excellent Publicity</span> — India's leading outdoor advertising agency, delivering impactful campaigns across billboards, transit media, mall activations, and innovative BTL solutions. Present in <span class="font-medium text-text-primary">500+ cities</span>.
-      </p>
-    </div>
-  </section>
+    <!-- Right Panel - Form -->
+    <main class="flex-1 p-6 lg:p-12 lg:pl-8 border-x border-red-100 flex justify-center items-center w-full">
+      <div class="max-w-2xl mx-auto lg:mx-0">
 
-  <!-- Form Section -->
-  <main class="container mx-auto px-6 py-8 pb-20">
-    <div class="max-w-3xl mx-auto">
-      <div class="form-card rounded-3xl overflow-hidden animate-in delay-4">
-        <div class="p-8 md:p-12 lg:p-16">
-          <form id="campaignForm" class="space-y-16">
+        <!-- Form Header -->
+        <div class="mb-10 animate-in">
+          <span class="text-xs font-medium text-primary uppercase tracking-widest">Campaign Brief</span>
+          <h2 class="font-display text-2xl md:text-3xl font-bold text-text-primary mt-2">Tell us about your campaign</h2>
+          <p class="text-text-secondary mt-2">Fill out the form below and our team will get back to you within 24 hours.</p>
+        </div>
+
+        <!-- Form Card -->
+        <div class="form-card rounded-2xl p-6 md:p-8 animate-in delay-1">
+          <form id="campaignForm" class="space-y-8">
 
             <!-- Brand Information -->
-            <section class="form-section">
-              <div class="mb-8">
-                <span class="text-xs font-medium text-primary uppercase tracking-widest">Step 01</span>
-                <h3 class="font-display text-2xl md:text-3xl font-bold text-text-primary mt-2">Brand Information</h3>
-              </div>
-              <div class="grid md:grid-cols-2 gap-5">
+            <section>
+              <h3 class="text-sm font-semibold text-text-primary mb-4 flex items-center">
+                <span class="w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-xs font-bold mr-2">1</span>
+                Brand Information
+              </h3>
+              <div class="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-sm font-medium text-text-secondary mb-2" for="brandName">Brand Name <span class="text-primary">*</span></label>
+                  <label class="block text-sm text-text-secondary mb-1.5" for="brandName">Brand Name <span class="text-primary">*</span></label>
                   <input type="text" id="brandName" name="brandName" required
-                    class="form-input w-full rounded-xl px-5 py-4 text-text-primary"
+                    class="form-input w-full rounded-xl px-4 py-3 text-sm"
                     placeholder="Enter brand name">
                 </div>
                 <div>
-                  <label class="block text-sm font-medium text-text-secondary mb-2" for="industry">Industry <span class="text-primary">*</span></label>
+                  <label class="block text-sm text-text-secondary mb-1.5" for="industry">Industry <span class="text-primary">*</span></label>
                   <select id="industry" name="industry" required
-                    class="form-input w-full rounded-xl px-5 py-4 text-text-primary">
+                    class="form-input w-full rounded-xl px-4 py-3 text-sm">
                     <option value="">Select industry</option>
                     <option value="FMCG">FMCG</option>
                     <option value="Healthcare">Healthcare</option>
@@ -356,9 +424,9 @@
                   </select>
                 </div>
                 <div class="md:col-span-2">
-                  <label class="block text-sm font-medium text-text-secondary mb-2" for="productCategory">Product/Service Category</label>
+                  <label class="block text-sm text-text-secondary mb-1.5" for="productCategory">Product/Service Category</label>
                   <input type="text" id="productCategory" name="productCategory"
-                    class="form-input w-full rounded-xl px-5 py-4 text-text-primary"
+                    class="form-input w-full rounded-xl px-4 py-3 text-sm"
                     placeholder="e.g., Skincare, Electric Vehicles, Online Banking">
                 </div>
               </div>
@@ -367,16 +435,16 @@
             <div class="section-divider"></div>
 
             <!-- Target Audience -->
-            <section class="form-section">
-              <div class="mb-8">
-                <span class="text-xs font-medium text-primary uppercase tracking-widest">Step 02</span>
-                <h3 class="font-display text-2xl md:text-3xl font-bold text-text-primary mt-2">Target Audience</h3>
-              </div>
-              <div class="grid md:grid-cols-2 gap-5">
+            <section>
+              <h3 class="text-sm font-semibold text-text-primary mb-4 flex items-center">
+                <span class="w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-xs font-bold mr-2">2</span>
+                Target Audience
+              </h3>
+              <div class="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-sm font-medium text-text-secondary mb-2" for="targetAgeRange">Age Range <span class="text-primary">*</span></label>
+                  <label class="block text-sm text-text-secondary mb-1.5" for="targetAgeRange">Age Range <span class="text-primary">*</span></label>
                   <select id="targetAgeRange" name="targetAgeRange" required
-                    class="form-input w-full rounded-xl px-5 py-4 text-text-primary">
+                    class="form-input w-full rounded-xl px-4 py-3 text-sm">
                     <option value="">Select age range</option>
                     <option value="18-24">18-24</option>
                     <option value="25-34">25-34</option>
@@ -387,9 +455,9 @@
                   </select>
                 </div>
                 <div>
-                  <label class="block text-sm font-medium text-text-secondary mb-2" for="targetGender">Gender <span class="text-primary">*</span></label>
+                  <label class="block text-sm text-text-secondary mb-1.5" for="targetGender">Gender <span class="text-primary">*</span></label>
                   <select id="targetGender" name="targetGender" required
-                    class="form-input w-full rounded-xl px-5 py-4 text-text-primary">
+                    class="form-input w-full rounded-xl px-4 py-3 text-sm">
                     <option value="">Select gender</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
@@ -402,78 +470,78 @@
             <div class="section-divider"></div>
 
             <!-- Campaign Details -->
-            <section class="form-section">
-              <div class="mb-8">
-                <span class="text-xs font-medium text-primary uppercase tracking-widest">Step 03</span>
-                <h3 class="font-display text-2xl md:text-3xl font-bold text-text-primary mt-2">Campaign Details</h3>
-              </div>
+            <section>
+              <h3 class="text-sm font-semibold text-text-primary mb-4 flex items-center">
+                <span class="w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-xs font-bold mr-2">3</span>
+                Campaign Details
+              </h3>
 
               <!-- Primary Channels -->
-              <div class="mb-8">
-                <label class="block text-sm font-medium text-text-secondary mb-4">Primary Channels <span class="text-primary">*</span></label>
-                <div class="grid sm:grid-cols-2 gap-3">
-                  <label class="checkbox-card flex items-center p-4 rounded-xl cursor-pointer">
+              <div class="mb-6">
+                <label class="block text-sm text-text-secondary mb-3">Primary Channels <span class="text-primary">*</span></label>
+                <div class="grid grid-cols-2 gap-2">
+                  <label class="checkbox-card flex items-center p-3 rounded-lg cursor-pointer">
                     <input type="checkbox" name="primaryChannels" value="Billboards/Hoardings">
-                    <span class="ml-3 text-sm font-medium text-text-primary">Billboards / Hoardings</span>
+                    <span class="ml-2.5 text-sm text-text-primary">Billboards</span>
                   </label>
-                  <label class="checkbox-card flex items-center p-4 rounded-xl cursor-pointer">
+                  <label class="checkbox-card flex items-center p-3 rounded-lg cursor-pointer">
                     <input type="checkbox" name="primaryChannels" value="Transit Media">
-                    <span class="ml-3 text-sm font-medium text-text-primary">Transit Media</span>
+                    <span class="ml-2.5 text-sm text-text-primary">Transit Media</span>
                   </label>
-                  <label class="checkbox-card flex items-center p-4 rounded-xl cursor-pointer">
+                  <label class="checkbox-card flex items-center p-3 rounded-lg cursor-pointer">
                     <input type="checkbox" name="primaryChannels" value="Mall Activations">
-                    <span class="ml-3 text-sm font-medium text-text-primary">Mall Activations</span>
+                    <span class="ml-2.5 text-sm text-text-primary">Mall Activations</span>
                   </label>
-                  <label class="checkbox-card flex items-center p-4 rounded-xl cursor-pointer">
+                  <label class="checkbox-card flex items-center p-3 rounded-lg cursor-pointer">
                     <input type="checkbox" name="primaryChannels" value="On-ground Events">
-                    <span class="ml-3 text-sm font-medium text-text-primary">On-ground Events</span>
+                    <span class="ml-2.5 text-sm text-text-primary">Events</span>
                   </label>
-                  <label class="checkbox-card flex items-center p-4 rounded-xl cursor-pointer">
+                  <label class="checkbox-card flex items-center p-3 rounded-lg cursor-pointer">
                     <input type="checkbox" name="primaryChannels" value="Mobile Van">
-                    <span class="ml-3 text-sm font-medium text-text-primary">Mobile Van</span>
+                    <span class="ml-2.5 text-sm text-text-primary">Mobile Van</span>
                   </label>
-                  <label class="checkbox-card flex items-center p-4 rounded-xl cursor-pointer">
+                  <label class="checkbox-card flex items-center p-3 rounded-lg cursor-pointer">
                     <input type="checkbox" name="primaryChannels" value="Lookwalkers">
-                    <span class="ml-3 text-sm font-medium text-text-primary">Lookwalkers</span>
+                    <span class="ml-2.5 text-sm text-text-primary">Lookwalkers</span>
                   </label>
-                  <label class="checkbox-card flex items-center p-4 rounded-xl cursor-pointer sm:col-span-2">
+                  <label class="checkbox-card flex items-center p-3 rounded-lg cursor-pointer col-span-2">
                     <input type="checkbox" name="primaryChannels" value="Digital OOH">
-                    <span class="ml-3 text-sm font-medium text-text-primary">Digital OOH (DOOH)</span>
+                    <span class="ml-2.5 text-sm text-text-primary">Digital OOH (DOOH)</span>
                   </label>
                 </div>
               </div>
 
               <!-- Key Regions -->
-              <div class="mb-8">
-                <label class="block text-sm font-medium text-text-secondary mb-4">Key Regions <span class="text-primary">*</span></label>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
-                  <label class="checkbox-card flex items-center p-4 rounded-xl cursor-pointer">
-                    <input type="checkbox" name="keyRegions" value="Metro Cities">
-                    <span class="ml-3 text-sm font-medium text-text-primary">Metro</span>
+              <div class="mb-6">
+                <label class="block text-sm text-text-secondary mb-3">Key Regions <span class="text-primary">*</span></label>
+                <div class="grid grid-cols-4 gap-2 mb-3">
+                  <label class="checkbox-card flex items-center justify-center p-3 rounded-lg cursor-pointer">
+                    <input type="checkbox" name="keyRegions" value="Metro Cities" class="sr-only peer">
+                    <span class="text-sm text-text-primary peer-checked:text-primary">Metro</span>
                   </label>
-                  <label class="checkbox-card flex items-center p-4 rounded-xl cursor-pointer">
-                    <input type="checkbox" name="keyRegions" value="Tier-1">
-                    <span class="ml-3 text-sm font-medium text-text-primary">Tier-1</span>
+                  <label class="checkbox-card flex items-center justify-center p-3 rounded-lg cursor-pointer">
+                    <input type="checkbox" name="keyRegions" value="Tier-1" class="sr-only peer">
+                    <span class="text-sm text-text-primary peer-checked:text-primary">Tier-1</span>
                   </label>
-                  <label class="checkbox-card flex items-center p-4 rounded-xl cursor-pointer">
-                    <input type="checkbox" name="keyRegions" value="Tier-2">
-                    <span class="ml-3 text-sm font-medium text-text-primary">Tier-2</span>
+                  <label class="checkbox-card flex items-center justify-center p-3 rounded-lg cursor-pointer">
+                    <input type="checkbox" name="keyRegions" value="Tier-2" class="sr-only peer">
+                    <span class="text-sm text-text-primary peer-checked:text-primary">Tier-2</span>
                   </label>
-                  <label class="checkbox-card flex items-center p-4 rounded-xl cursor-pointer">
-                    <input type="checkbox" name="keyRegions" value="Tier-3">
-                    <span class="ml-3 text-sm font-medium text-text-primary">Tier-3</span>
+                  <label class="checkbox-card flex items-center justify-center p-3 rounded-lg cursor-pointer">
+                    <input type="checkbox" name="keyRegions" value="Tier-3" class="sr-only peer">
+                    <span class="text-sm text-text-primary peer-checked:text-primary">Tier-3</span>
                   </label>
                 </div>
                 <input type="text" id="specificCities" name="specificCities"
-                  class="form-input w-full rounded-xl px-5 py-4 text-text-primary"
+                  class="form-input w-full rounded-xl px-4 py-3 text-sm"
                   placeholder="Specific cities (e.g., Mumbai, Delhi, Bangalore)">
               </div>
 
               <!-- Campaign Objective -->
               <div>
-                <label class="block text-sm font-medium text-text-secondary mb-2" for="campaignObjective">Campaign Objective <span class="text-primary">*</span></label>
+                <label class="block text-sm text-text-secondary mb-1.5" for="campaignObjective">Campaign Objective <span class="text-primary">*</span></label>
                 <select id="campaignObjective" name="campaignObjective" required
-                  class="form-input w-full rounded-xl px-5 py-4 text-text-primary">
+                  class="form-input w-full rounded-xl px-4 py-3 text-sm">
                   <option value="">Select objective</option>
                   <option value="Brand Awareness">Brand Awareness</option>
                   <option value="Product Launch">Product Launch</option>
@@ -487,26 +555,26 @@
             <div class="section-divider"></div>
 
             <!-- Timeline & Budget -->
-            <section class="form-section">
-              <div class="mb-8">
-                <span class="text-xs font-medium text-primary uppercase tracking-widest">Step 04</span>
-                <h3 class="font-display text-2xl md:text-3xl font-bold text-text-primary mt-2">Timeline & Budget</h3>
-              </div>
-              <div class="grid md:grid-cols-3 gap-5">
+            <section>
+              <h3 class="text-sm font-semibold text-text-primary mb-4 flex items-center">
+                <span class="w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-xs font-bold mr-2">4</span>
+                Timeline & Budget
+              </h3>
+              <div class="grid md:grid-cols-3 gap-4">
                 <div>
-                  <label class="block text-sm font-medium text-text-secondary mb-2" for="startDate">Start Date <span class="text-primary">*</span></label>
+                  <label class="block text-sm text-text-secondary mb-1.5" for="startDate">Start Date <span class="text-primary">*</span></label>
                   <input type="date" id="startDate" name="startDate" required
-                    class="form-input w-full rounded-xl px-5 py-4 text-text-primary">
+                    class="form-input w-full rounded-xl px-4 py-3 text-sm">
                 </div>
                 <div>
-                  <label class="block text-sm font-medium text-text-secondary mb-2" for="endDate">End Date <span class="text-primary">*</span></label>
+                  <label class="block text-sm text-text-secondary mb-1.5" for="endDate">End Date <span class="text-primary">*</span></label>
                   <input type="date" id="endDate" name="endDate" required
-                    class="form-input w-full rounded-xl px-5 py-4 text-text-primary">
+                    class="form-input w-full rounded-xl px-4 py-3 text-sm">
                 </div>
                 <div>
-                  <label class="block text-sm font-medium text-text-secondary mb-2" for="budgetRange">Budget Range <span class="text-primary">*</span></label>
+                  <label class="block text-sm text-text-secondary mb-1.5" for="budgetRange">Budget <span class="text-primary">*</span></label>
                   <select id="budgetRange" name="budgetRange" required
-                    class="form-input w-full rounded-xl px-5 py-4 text-text-primary">
+                    class="form-input w-full rounded-xl px-4 py-3 text-sm">
                     <option value="">Select budget</option>
                     <option value="Under 5L">Under 5L</option>
                     <option value="5-10L">5-10L</option>
@@ -522,50 +590,50 @@
             <div class="section-divider"></div>
 
             <!-- Additional Requirements -->
-            <section class="form-section">
-              <div class="mb-8">
-                <span class="text-xs font-medium text-primary uppercase tracking-widest">Step 05</span>
-                <h3 class="font-display text-2xl md:text-3xl font-bold text-text-primary mt-2">Additional Details</h3>
-              </div>
-              <textarea id="additionalRequirements" name="additionalRequirements" rows="4"
-                class="form-input w-full rounded-xl px-5 py-4 text-text-primary resize-none"
+            <section>
+              <h3 class="text-sm font-semibold text-text-primary mb-4 flex items-center">
+                <span class="w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-xs font-bold mr-2">5</span>
+                Additional Details
+              </h3>
+              <textarea id="additionalRequirements" name="additionalRequirements" rows="3"
+                class="form-input w-full rounded-xl px-4 py-3 text-sm resize-none"
                 placeholder="Any specific requirements, creative direction, or additional information..."></textarea>
             </section>
 
             <div class="section-divider"></div>
 
             <!-- Contact Details -->
-            <section class="form-section">
-              <div class="mb-8">
-                <span class="text-xs font-medium text-primary uppercase tracking-widest">Step 06</span>
-                <h3 class="font-display text-2xl md:text-3xl font-bold text-text-primary mt-2">Contact Details</h3>
-              </div>
-              <div class="grid md:grid-cols-3 gap-5">
+            <section>
+              <h3 class="text-sm font-semibold text-text-primary mb-4 flex items-center">
+                <span class="w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-xs font-bold mr-2">6</span>
+                Contact Details
+              </h3>
+              <div class="grid md:grid-cols-3 gap-4">
                 <div>
-                  <label class="block text-sm font-medium text-text-secondary mb-2" for="contactName">Name <span class="text-primary">*</span></label>
+                  <label class="block text-sm text-text-secondary mb-1.5" for="contactName">Name <span class="text-primary">*</span></label>
                   <input type="text" id="contactName" name="contactName" required
-                    class="form-input w-full rounded-xl px-5 py-4 text-text-primary"
+                    class="form-input w-full rounded-xl px-4 py-3 text-sm"
                     placeholder="Your name">
                 </div>
                 <div>
-                  <label class="block text-sm font-medium text-text-secondary mb-2" for="contactEmail">Email <span class="text-primary">*</span></label>
+                  <label class="block text-sm text-text-secondary mb-1.5" for="contactEmail">Email <span class="text-primary">*</span></label>
                   <input type="email" id="contactEmail" name="contactEmail" required
-                    class="form-input w-full rounded-xl px-5 py-4 text-text-primary"
+                    class="form-input w-full rounded-xl px-4 py-3 text-sm"
                     placeholder="your@email.com">
                 </div>
                 <div>
-                  <label class="block text-sm font-medium text-text-secondary mb-2" for="contactPhone">Phone <span class="text-primary">*</span></label>
+                  <label class="block text-sm text-text-secondary mb-1.5" for="contactPhone">Phone <span class="text-primary">*</span></label>
                   <input type="tel" id="contactPhone" name="contactPhone" required
-                    class="form-input w-full rounded-xl px-5 py-4 text-text-primary"
+                    class="form-input w-full rounded-xl px-4 py-3 text-sm"
                     placeholder="+91 98765 43210">
                 </div>
               </div>
             </section>
 
             <!-- Submit Button -->
-            <div class="pt-4">
+            <div class="pt-2">
               <button type="submit" id="submitBtn"
-                class="btn-primary w-full py-5 rounded-2xl text-white font-medium text-lg flex items-center justify-center">
+                class="btn-primary w-full py-4 rounded-xl text-white font-medium text-base flex items-center justify-center">
                 <span id="btnText">Submit Campaign Brief</span>
                 <svg id="btnArrow" class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -576,47 +644,41 @@
           </form>
 
           <!-- Success Message -->
-          <div id="successMessage" class="hidden text-center py-16">
-            <div class="success-checkmark w-24 h-24 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-8">
-              <svg class="w-12 h-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div id="successMessage" class="hidden text-center py-12">
+            <div class="success-checkmark w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg class="w-10 h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
               </svg>
             </div>
-            <h3 class="font-display text-3xl font-bold text-text-primary mb-4">Thank You!</h3>
-            <p class="text-text-secondary mb-8 max-w-md mx-auto">Your campaign brief has been submitted successfully. Our team will review your requirements and get back to you shortly.</p>
+            <h3 class="font-display text-2xl font-bold text-text-primary mb-3">Thank You!</h3>
+            <p class="text-text-secondary mb-6 max-w-sm mx-auto">Your campaign brief has been submitted. Our team will get back to you within 24 hours.</p>
             <button onclick="resetForm()" class="text-primary font-medium hover:underline underline-offset-4">Submit another brief</button>
           </div>
 
           <!-- Error Message -->
-          <div id="errorMessage" class="hidden bg-red-50 border border-red-100 rounded-2xl p-6 mt-8">
+          <div id="errorMessage" class="hidden bg-red-50 border border-red-100 rounded-xl p-4 mt-6">
             <div class="flex items-start">
-              <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
               </div>
-              <div class="ml-4">
-                <h4 class="font-medium text-red-600 mb-1">Submission Failed</h4>
-                <p id="errorText" class="text-text-secondary text-sm"></p>
+              <div class="ml-3">
+                <h4 class="font-medium text-red-600 text-sm">Submission Failed</h4>
+                <p id="errorText" class="text-text-secondary text-sm mt-0.5"></p>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </main>
 
-  <!-- Footer -->
-  <footer class="border-t border-border py-10">
-    <div class="container mx-auto px-6">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-        <div class="logo-container !py-2 !px-4 !rounded-lg">
-          <img src="/excellent-logo-main.png" alt="Excellent Publicity" class="h-6">
+        <!-- Desktop Footer -->
+        <div class="hidden lg:block mt-8">
+          <p class="text-text-tertiary text-xs">&copy; 2024 Excellent Publicity. All rights reserved.</p>
         </div>
-        <p class="text-text-tertiary text-sm">&copy; 2024 Excellent Publicity. All rights reserved.</p>
       </div>
-    </div>
-  </footer>
+    </main>
+
+  </div>
 
   <script>
     const form = document.getElementById('campaignForm');
