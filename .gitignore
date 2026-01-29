@@ -1,0 +1,97 @@
+# =========================
+# OS / Editor files
+# =========================
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.log
+
+# =========================
+# IDEs & Editors
+# =========================
+.vscode/
+.idea/
+*.iml
+
+# =========================
+# Node.js
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-lock.yaml
+
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.env
+.venv/
+venv/
+env/
+pip-wheel-metadata/
+dist/
+build/
+*.egg-info/
+
+# =========================
+# Jupyter / ML
+# =========================
+.ipynb_checkpoints/
+*.h5
+*.pt
+*.pth
+*.onnx
+*.ckpt
+data/
+datasets/
+models/
+wetransfer_01-01-to-04-01-xlsx_2026-01-28_1214/
+wetransfer_all-media-data_2025-11-20_0937/
+
+# =========================
+# Frontend builds
+# =========================
+dist/
+build/
+.next/
+out/
+.cache/
+
+# =========================
+# Backend / Frameworks
+# =========================
+.env.*
+!.env.example
+
+# =========================
+# Databases
+# =========================
+*.sqlite
+*.sqlite3
+*.db
+*.mdb
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+
+# =========================
+# Docker
+# =========================
+.dockerignore
+docker-compose.override.yml
+
+# =========================
+# Misc
+# =========================
+coverage/
+tmp/
+temp/

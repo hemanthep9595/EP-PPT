@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Excellent Publicity - Campaign Brief</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Display:wght@400;500;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#c01625',
+            'primary-dark': '#9a111e',
+            'primary-light': '#e8424f',
+            surface: '#ffffff',
+            'surface-alt': '#fafafa',
+            'surface-elevated': '#ffffff',
+            border: '#e5e5e5',
+            'border-light': '#f0f0f0',
+            'text-primary': '#1a1a1a',
+            'text-secondary': '#666666',
+            'text-tertiary': '#999999',
+          },
+          fontFamily: {
+            'display': ['"Google Sans Display"', '"Google Sans"', 'system-ui', 'sans-serif'],
+            'body': ['"Google Sans"', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * {
+      font-family: 'Google Sans', system-ui, sans-serif;
+    }
+
+    /* Subtle grain texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.015;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      z-index: 9999;
+    }
+
+    /* Logo container with red background */
+    .logo-container {
+      background: linear-gradient(135deg, #c01625 0%, #9a111e 100%);
+      padding: 16px 32px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 24px rgba(192, 22, 37, 0.25);
+    }
+
+    /* Elegant form styling */
+    .form-input {
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      background: #fafafa;
+      border: 1.5px solid #e5e5e5;
+    }
+
+    .form-input:hover {
+      border-color: #d0d0d0;
+      background: #ffffff;
+    }
+
+    .form-input:focus {
+      border-color: #c01625;
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(192, 22, 37, 0.08);
+      outline: none;
+    }
+
+    .form-input::placeholder {
+      color: #999999;
+    }
+
+    /* Section styling */
+    .form-section {
+      position: relative;
+    }
+
+    .section-number {
+      position: absolute;
+      left: -60px;
+      top: 0;
+      font-family: 'Google Sans Display', sans-serif;
+      font-size: 64px;
+      font-weight: 700;
+      color: #f5f5f5;
+      line-height: 1;
+      user-select: none;
+    }
+
+    @media (max-width: 1024px) {
+      .section-number {
+        position: static;
+        font-size: 48px;
+        margin-bottom: 8px;
+      }
+    }
+
+    /* Checkbox cards */
+    .checkbox-card {
+      position: relative;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      background: #fafafa;
+      border: 1.5px solid #e5e5e5;
+    }
+
+    .checkbox-card:hover {
+      border-color: #c01625;
+      background: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .checkbox-card:has(input:checked) {
+      background: linear-gradient(135deg, rgba(192, 22, 37, 0.04) 0%, rgba(192, 22, 37, 0.08) 100%);
+      border-color: #c01625;
+    }
+
+    .checkbox-card input[type="checkbox"] {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #d0d0d0;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      position: relative;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .checkbox-card input[type="checkbox"]:checked {
+      background: #c01625;
+      border-color: #c01625;
+    }
+
+    .checkbox-card input[type="checkbox"]:checked::after {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 2px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    /* Button styling */
+    .btn-primary {
+      background: linear-gradient(135deg, #c01625 0%, #9a111e 100%);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .btn-primary:hover::before {
+      left: 100%;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(192, 22, 37, 0.35);
+    }
+
+    .btn-primary:active {
+      transform: translateY(-1px);
+    }
+
+    /* Staggered animations */
+    .animate-in {
+      animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+    .delay-6 { animation-delay: 0.6s; }
+
+    /* Loading spinner */
+    .loading-spinner {
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top: 2px solid #fff;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Success animation */
+    .success-checkmark {
+      animation: scaleIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Select dropdown styling */
+    select.form-input {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23666666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      background-size: 16px;
+      padding-right: 48px;
+    }
+
+    /* Decorative elements */
+    .hero-decoration {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(192, 22, 37, 0.03) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    /* Card styling */
+    .form-card {
+      background: #ffffff;
+      border: 1px solid #e5e5e5;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 8px 40px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Divider */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #e5e5e5, transparent);
+    }
+  </style>
+</head>
+<body class="bg-white text-text-primary min-h-screen">
+
+  <!-- Hero Section -->
+  <header class="relative overflow-hidden pt-12 pb-8 md:pt-20 md:pb-12">
+    <div class="hero-decoration -top-64 -right-64"></div>
+    <div class="hero-decoration -bottom-64 -left-64"></div>
+
+    <div class="container mx-auto px-6 relative">
+      <div class="max-w-4xl mx-auto">
+        <div class="flex flex-col items-center text-center">
+          <!-- Logo with red background container -->
+          <div class="animate-in logo-container mb-10">
+            <img src="/excellent-logo-main.png" alt="Excellent Publicity" class="h-10 md:h-12">
+          </div>
+
+          <h1 class="animate-in delay-1 font-display text-4xl md:text-6xl lg:text-7xl font-bold text-text-primary tracking-tight mb-6">
+            Campaign Brief
+          </h1>
+
+          <p class="animate-in delay-2 text-text-secondary text-lg md:text-xl max-w-xl leading-relaxed">
+            Tell us about your brand and campaign goals. Let's create something extraordinary together.
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section class="container mx-auto px-6 py-8 md:py-12">
+    <div class="max-w-2xl mx-auto text-center animate-in delay-3">
+      <p class="text-text-secondary leading-relaxed text-base md:text-lg">
+        <span class="text-primary font-medium">Excellent Publicity</span> — India's leading outdoor advertising agency, delivering impactful campaigns across billboards, transit media, mall activations, and innovative BTL solutions. Present in <span class="font-medium text-text-primary">500+ cities</span>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Form Section -->
+  <main class="container mx-auto px-6 py-8 pb-20">
+    <div class="max-w-3xl mx-auto">
+      <div class="form-card rounded-3xl overflow-hidden animate-in delay-4">
+        <div class="p-8 md:p-12 lg:p-16">
+          <form id="campaignForm" class="space-y-16">
+
+            <!-- Brand Information -->
+            <section class="form-section">
+              <div class="mb-8">
+                <span class="text-xs font-medium text-primary uppercase tracking-widest">Step 01</span>
+                <h3 class="font-display text-2xl md:text-3xl font-bold text-text-primary mt-2">Brand Information</h3>
+              </div>
+              <div class="grid md:grid-cols-2 gap-5">
+                <div>
+                  <label class="block text-sm font-medium text-text-secondary mb-2" for="brandName">Brand Name <span class="text-primary">*</span></label>
+                  <input type="text" id="brandName" name="brandName" required
+                    class="form-input w-full rounded-xl px-5 py-4 text-text-primary"
+                    placeholder="Enter brand name">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-text-secondary mb-2" for="industry">Industry <span class="text-primary">*</span></label>
+                  <select id="industry" name="industry" required
+                    class="form-input w-full rounded-xl px-5 py-4 text-text-primary">
+                    <option value="">Select industry</option>
+                    <option value="FMCG">FMCG</option>
+                    <option value="Healthcare">Healthcare</option>
+                    <option value="Automotive">Automotive</option>
+                    <option value="Real Estate">Real Estate</option>
+                    <option value="Education">Education</option>
+                    <option value="Finance">Finance</option>
+                    <option value="E-commerce">E-commerce</option>
+                    <option value="Retail">Retail</option>
+                    <option value="Tech/IT">Tech/IT</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="md:col-span-2">
+                  <label class="block text-sm font-medium text-text-secondary mb-2" for="productCategory">Product/Service Category</label>
+                  <input type="text" id="productCategory" name="productCategory"
+                    class="form-input w-full rounded-xl px-5 py-4 text-text-primary"
+                    placeholder="e.g., Skincare, Electric Vehicles, Online Banking">
+                </div>
+              </div>
+            </section>
+
+            <div class="section-divider"></div>
+
+            <!-- Target Audience -->
+            <section class="form-section">
+              <div class="mb-8">
+                <span class="text-xs font-medium text-primary uppercase tracking-widest">Step 02</span>
+                <h3 class="font-display text-2xl md:text-3xl font-bold text-text-primary mt-2">Target Audience</h3>
+              </div>
+              <div class="grid md:grid-cols-2 gap-5">
+                <div>
+                  <label class="block text-sm font-medium text-text-secondary mb-2" for="targetAgeRange">Age Range <span class="text-primary">*</span></label>
+                  <select id="targetAgeRange" name="targetAgeRange" required
+                    class="form-input w-full rounded-xl px-5 py-4 text-text-primary">
+                    <option value="">Select age range</option>
+                    <option value="18-24">18-24</option>
+                    <option value="25-34">25-34</option>
+                    <option value="35-44">35-44</option>
+                    <option value="45-54">45-54</option>
+                    <option value="55+">55+</option>
+                    <option value="All Ages">All Ages</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-text-secondary mb-2" for="targetGender">Gender <span class="text-primary">*</span></label>
+                  <select id="targetGender" name="targetGender" required
+                    class="form-input w-full rounded-xl px-5 py-4 text-text-primary">
+                    <option value="">Select gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="All">All</option>
+                  </select>
+                </div>
+              </div>
+            </section>
+
+            <div class="section-divider"></div>
+
+            <!-- Campaign Details -->
+            <section class="form-section">
+              <div class="mb-8">
+                <span class="text-xs font-medium text-primary uppercase tracking-widest">Step 03</span>
+                <h3 class="font-display text-2xl md:text-3xl font-bold text-text-primary mt-2">Campaign Details</h3>
+              </div>
+
+              <!-- Primary Channels -->
+              <div class="mb-8">
+                <label class="block text-sm font-medium text-text-secondary mb-4">Primary Channels <span class="text-primary">*</span></label>
+                <div class="grid sm:grid-cols-2 gap-3">
+                  <label class="checkbox-card flex items-center p-4 rounded-xl cursor-pointer">
+                    <input type="checkbox" name="primaryChannels" value="Billboards/Hoardings">
+                    <span class="ml-3 text-sm font-medium text-text-primary">Billboards / Hoardings</span>
+                  </label>
+                  <label class="checkbox-card flex items-center p-4 rounded-xl cursor-pointer">
+                    <input type="checkbox" name="primaryChannels" value="Transit Media">
+                    <span class="ml-3 text-sm font-medium text-text-primary">Transit Media</span>
+                  </label>
+                  <label class="checkbox-card flex items-center p-4 rounded-xl cursor-pointer">
+                    <input type="checkbox" name="primaryChannels" value="Mall Activations">
+                    <span class="ml-3 text-sm font-medium text-text-primary">Mall Activations</span>
+                  </label>
+                  <label class="checkbox-card flex items-center p-4 rounded-xl cursor-pointer">
+                    <input type="checkbox" name="primaryChannels" value="On-ground Events">
+                    <span class="ml-3 text-sm font-medium text-text-primary">On-ground Events</span>
+                  </label>
+                  <label class="checkbox-card flex items-center p-4 rounded-xl cursor-pointer">
+                    <input type="checkbox" name="primaryChannels" value="Mobile Van">
+                    <span class="ml-3 text-sm font-medium text-text-primary">Mobile Van</span>
+                  </label>
+                  <label class="checkbox-card flex items-center p-4 rounded-xl cursor-pointer">
+                    <input type="checkbox" name="primaryChannels" value="Lookwalkers">
+                    <span class="ml-3 text-sm font-medium text-text-primary">Lookwalkers</span>
+                  </label>
+                  <label class="checkbox-card flex items-center p-4 rounded-xl cursor-pointer sm:col-span-2">
+                    <input type="checkbox" name="primaryChannels" value="Digital OOH">
+                    <span class="ml-3 text-sm font-medium text-text-primary">Digital OOH (DOOH)</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Key Regions -->
+              <div class="mb-8">
+                <label class="block text-sm font-medium text-text-secondary mb-4">Key Regions <span class="text-primary">*</span></label>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+                  <label class="checkbox-card flex items-center p-4 rounded-xl cursor-pointer">
+                    <input type="checkbox" name="keyRegions" value="Metro Cities">
+                    <span class="ml-3 text-sm font-medium text-text-primary">Metro</span>
+                  </label>
+                  <label class="checkbox-card flex items-center p-4 rounded-xl cursor-pointer">
+                    <input type="checkbox" name="keyRegions" value="Tier-1">
+                    <span class="ml-3 text-sm font-medium text-text-primary">Tier-1</span>
+                  </label>
+                  <label class="checkbox-card flex items-center p-4 rounded-xl cursor-pointer">
+                    <input type="checkbox" name="keyRegions" value="Tier-2">
+                    <span class="ml-3 text-sm font-medium text-text-primary">Tier-2</span>
+                  </label>
+                  <label class="checkbox-card flex items-center p-4 rounded-xl cursor-pointer">
+                    <input type="checkbox" name="keyRegions" value="Tier-3">
+                    <span class="ml-3 text-sm font-medium text-text-primary">Tier-3</span>
+                  </label>
+                </div>
+                <input type="text" id="specificCities" name="specificCities"
+                  class="form-input w-full rounded-xl px-5 py-4 text-text-primary"
+                  placeholder="Specific cities (e.g., Mumbai, Delhi, Bangalore)">
+              </div>
+
+              <!-- Campaign Objective -->
+              <div>
+                <label class="block text-sm font-medium text-text-secondary mb-2" for="campaignObjective">Campaign Objective <span class="text-primary">*</span></label>
+                <select id="campaignObjective" name="campaignObjective" required
+                  class="form-input w-full rounded-xl px-5 py-4 text-text-primary">
+                  <option value="">Select objective</option>
+                  <option value="Brand Awareness">Brand Awareness</option>
+                  <option value="Product Launch">Product Launch</option>
+                  <option value="Lead Generation">Lead Generation</option>
+                  <option value="Event Promotion">Event Promotion</option>
+                  <option value="Seasonal Campaign">Seasonal Campaign</option>
+                </select>
+              </div>
+            </section>
+
+            <div class="section-divider"></div>
+
+            <!-- Timeline & Budget -->
+            <section class="form-section">
+              <div class="mb-8">
+                <span class="text-xs font-medium text-primary uppercase tracking-widest">Step 04</span>
+                <h3 class="font-display text-2xl md:text-3xl font-bold text-text-primary mt-2">Timeline & Budget</h3>
+              </div>
+              <div class="grid md:grid-cols-3 gap-5">
+                <div>
+                  <label class="block text-sm font-medium text-text-secondary mb-2" for="startDate">Start Date <span class="text-primary">*</span></label>
+                  <input type="date" id="startDate" name="startDate" required
+                    class="form-input w-full rounded-xl px-5 py-4 text-text-primary">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-text-secondary mb-2" for="endDate">End Date <span class="text-primary">*</span></label>
+                  <input type="date" id="endDate" name="endDate" required
+                    class="form-input w-full rounded-xl px-5 py-4 text-text-primary">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-text-secondary mb-2" for="budgetRange">Budget Range <span class="text-primary">*</span></label>
+                  <select id="budgetRange" name="budgetRange" required
+                    class="form-input w-full rounded-xl px-5 py-4 text-text-primary">
+                    <option value="">Select budget</option>
+                    <option value="Under 5L">Under 5L</option>
+                    <option value="5-10L">5-10L</option>
+                    <option value="10-25L">10-25L</option>
+                    <option value="25-50L">25-50L</option>
+                    <option value="50L-1Cr">50L-1Cr</option>
+                    <option value="Above 1Cr">Above 1Cr</option>
+                  </select>
+                </div>
+              </div>
+            </section>
+
+            <div class="section-divider"></div>
+
+            <!-- Additional Requirements -->
+            <section class="form-section">
+              <div class="mb-8">
+                <span class="text-xs font-medium text-primary uppercase tracking-widest">Step 05</span>
+                <h3 class="font-display text-2xl md:text-3xl font-bold text-text-primary mt-2">Additional Details</h3>
+              </div>
+              <textarea id="additionalRequirements" name="additionalRequirements" rows="4"
+                class="form-input w-full rounded-xl px-5 py-4 text-text-primary resize-none"
+                placeholder="Any specific requirements, creative direction, or additional information..."></textarea>
+            </section>
+
+            <div class="section-divider"></div>
+
+            <!-- Contact Details -->
+            <section class="form-section">
+              <div class="mb-8">
+                <span class="text-xs font-medium text-primary uppercase tracking-widest">Step 06</span>
+                <h3 class="font-display text-2xl md:text-3xl font-bold text-text-primary mt-2">Contact Details</h3>
+              </div>
+              <div class="grid md:grid-cols-3 gap-5">
+                <div>
+                  <label class="block text-sm font-medium text-text-secondary mb-2" for="contactName">Name <span class="text-primary">*</span></label>
+                  <input type="text" id="contactName" name="contactName" required
+                    class="form-input w-full rounded-xl px-5 py-4 text-text-primary"
+                    placeholder="Your name">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-text-secondary mb-2" for="contactEmail">Email <span class="text-primary">*</span></label>
+                  <input type="email" id="contactEmail" name="contactEmail" required
+                    class="form-input w-full rounded-xl px-5 py-4 text-text-primary"
+                    placeholder="your@email.com">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-text-secondary mb-2" for="contactPhone">Phone <span class="text-primary">*</span></label>
+                  <input type="tel" id="contactPhone" name="contactPhone" required
+                    class="form-input w-full rounded-xl px-5 py-4 text-text-primary"
+                    placeholder="+91 98765 43210">
+                </div>
+              </div>
+            </section>
+
+            <!-- Submit Button -->
+            <div class="pt-4">
+              <button type="submit" id="submitBtn"
+                class="btn-primary w-full py-5 rounded-2xl text-white font-medium text-lg flex items-center justify-center">
+                <span id="btnText">Submit Campaign Brief</span>
+                <svg id="btnArrow" class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+                <div id="btnLoader" class="loading-spinner hidden ml-3"></div>
+              </button>
+            </div>
+          </form>
+
+          <!-- Success Message -->
+          <div id="successMessage" class="hidden text-center py-16">
+            <div class="success-checkmark w-24 h-24 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-8">
+              <svg class="w-12 h-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+            </div>
+            <h3 class="font-display text-3xl font-bold text-text-primary mb-4">Thank You!</h3>
+            <p class="text-text-secondary mb-8 max-w-md mx-auto">Your campaign brief has been submitted successfully. Our team will review your requirements and get back to you shortly.</p>
+            <button onclick="resetForm()" class="text-primary font-medium hover:underline underline-offset-4">Submit another brief</button>
+          </div>
+
+          <!-- Error Message -->
+          <div id="errorMessage" class="hidden bg-red-50 border border-red-100 rounded-2xl p-6 mt-8">
+            <div class="flex items-start">
+              <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <div class="ml-4">
+                <h4 class="font-medium text-red-600 mb-1">Submission Failed</h4>
+                <p id="errorText" class="text-text-secondary text-sm"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-border py-10">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="logo-container !py-2 !px-4 !rounded-lg">
+          <img src="/excellent-logo-main.png" alt="Excellent Publicity" class="h-6">
+        </div>
+        <p class="text-text-tertiary text-sm">&copy; 2024 Excellent Publicity. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById('campaignForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    const btnArrow = document.getElementById('btnArrow');
+    const btnLoader = document.getElementById('btnLoader');
+    const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage');
+    const errorText = document.getElementById('errorText');
+
+    // Set minimum date to today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('startDate').setAttribute('min', today);
+    document.getElementById('endDate').setAttribute('min', today);
+
+    // Update end date min when start date changes
+    document.getElementById('startDate').addEventListener('change', function() {
+      document.getElementById('endDate').setAttribute('min', this.value);
+    });
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      // Validate at least one channel selected
+      const channels = document.querySelectorAll('input[name="primaryChannels"]:checked');
+      if (channels.length === 0) {
+        showError('Please select at least one primary channel.');
+        return;
+      }
+
+      // Validate at least one region selected or specific cities entered
+      const regions = document.querySelectorAll('input[name="keyRegions"]:checked');
+      const specificCities = document.getElementById('specificCities').value.trim();
+      if (regions.length === 0 && !specificCities) {
+        showError('Please select at least one region or enter specific cities.');
+        return;
+      }
+
+      // Show loading state
+      submitBtn.disabled = true;
+      btnText.textContent = 'Submitting...';
+      btnArrow.classList.add('hidden');
+      btnLoader.classList.remove('hidden');
+      errorMessage.classList.add('hidden');
+
+      // Collect form data
+      const formData = {
+        brandName: document.getElementById('brandName').value,
+        industry: document.getElementById('industry').value,
+        productCategory: document.getElementById('productCategory').value,
+        targetAgeRange: document.getElementById('targetAgeRange').value,
+        targetGender: document.getElementById('targetGender').value,
+        primaryChannels: Array.from(channels).map(cb => cb.value),
+        keyRegions: Array.from(regions).map(cb => cb.value),
+        specificCities: specificCities,
+        campaignObjective: document.getElementById('campaignObjective').value,
+        startDate: document.getElementById('startDate').value,
+        endDate: document.getElementById('endDate').value,
+        budgetRange: document.getElementById('budgetRange').value,
+        additionalRequirements: document.getElementById('additionalRequirements').value,
+        contactName: document.getElementById('contactName').value,
+        contactEmail: document.getElementById('contactEmail').value,
+        contactPhone: document.getElementById('contactPhone').value
+      };
+
+      try {
+        const response = await fetch('/api/campaign-brief', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          form.classList.add('hidden');
+          successMessage.classList.remove('hidden');
+        } else {
+          showError(result.errors ? result.errors.join(', ') : result.message);
+        }
+      } catch (error) {
+        showError('Network error. Please check your connection and try again.');
+      } finally {
+        submitBtn.disabled = false;
+        btnText.textContent = 'Submit Campaign Brief';
+        btnArrow.classList.remove('hidden');
+        btnLoader.classList.add('hidden');
+      }
+    });
+
+    function showError(message) {
+      errorText.textContent = message;
+      errorMessage.classList.remove('hidden');
+      errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function resetForm() {
+      form.reset();
+      form.classList.remove('hidden');
+      successMessage.classList.add('hidden');
+      errorMessage.classList.add('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
