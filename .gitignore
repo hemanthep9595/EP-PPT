@@ -6,7 +6,7 @@ Thumbs.db
 *.swp
 *.swo
 *.log
-
+/Outdoor_Data_2024.csv
 # =========================
 # IDEs & Editors
 # =========================
