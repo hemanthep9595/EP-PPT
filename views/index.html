@@ -21,11 +21,10 @@
             'primary-light': '#e8424f',
             surface: '#ffffff',
             'surface-alt': '#fafafa',
-            border: '#e5e5e5',
-            'border-light': '#f0f0f0',
-            'text-primary': '#1a1a1a',
-            'text-secondary': '#666666',
-            'text-tertiary': '#999999',
+            border: '#e4e4e7',
+            'text-primary': '#09090b',
+            'text-secondary': '#71717a',
+            'text-tertiary': '#a1a1aa',
           },
           fontFamily: {
             'display': ['"Google Sans Display"', '"Google Sans"', 'system-ui', 'sans-serif'],
@@ -40,7 +39,6 @@
       font-family: 'Google Sans', system-ui, sans-serif;
     }
 
-    /* Subtle grain texture overlay */
     body::before {
       content: '';
       position: fixed;
@@ -54,7 +52,6 @@
       z-index: 9999;
     }
 
-    /* Left panel styling */
     .left-panel {
       background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
       position: relative;
@@ -70,14 +67,6 @@
       background: linear-gradient(180deg, transparent, #e5e5e5, transparent);
     }
 
-    /* Logo container with red background */
-    .logo-container {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Stat card styling */
     .stat-card {
       background: white;
       border: 1px solid #e5e5e5;
@@ -92,7 +81,6 @@
       transform: translateY(-2px);
     }
 
-    /* Service tag styling */
     .service-tag {
       background: #fafafa;
       border: 1px solid #e5e5e5;
@@ -109,111 +97,528 @@
       color: #c01625;
     }
 
-    /* Elegant form styling */
+    /* shadcn-style inputs */
     .form-input {
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      background: #fafafa;
-      border: 1.5px solid #e5e5e5;
+      width: 100%;
+      padding: 10px 14px;
+      background: #ffffff;
+      border: 1px solid #e4e4e7;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: all 0.15s ease;
+      outline: none;
     }
 
     .form-input:hover {
-      border-color: #d0d0d0;
-      background: #ffffff;
+      border-color: #a1a1aa;
     }
 
     .form-input:focus {
       border-color: #c01625;
-      background: #ffffff;
-      box-shadow: 0 0 0 4px rgba(192, 22, 37, 0.08);
-      outline: none;
+      box-shadow: 0 0 0 3px rgba(192, 22, 37, 0.08);
     }
 
     .form-input::placeholder {
-      color: #999999;
+      color: #a1a1aa;
     }
 
-    /* Checkbox cards */
-    .checkbox-card {
+    .form-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: #09090b;
+      margin-bottom: 8px;
+    }
+
+    .form-label .required {
+      color: #c01625;
+    }
+
+    /* Combobox styles */
+    .combobox-container {
       position: relative;
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .combobox-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .combobox-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      margin-top: 4px;
+      background: white;
+      border: 1px solid #e4e4e7;
+      border-radius: 8px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+      z-index: 50;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+    }
+
+    .combobox-dropdown.open {
+      display: block;
+      animation: dropdownSlide 0.15s ease-out;
+    }
+
+    @keyframes dropdownSlide {
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .combobox-search {
+      position: sticky;
+      top: 0;
+      background: white;
+      padding: 8px;
+      border-bottom: 1px solid #e4e4e7;
+    }
+
+    .combobox-search input {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid #e4e4e7;
+      border-radius: 6px;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .combobox-search input:focus {
+      border-color: #c01625;
+    }
+
+    .combobox-item {
+      padding: 10px 14px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.1s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .combobox-item:hover {
+      background: #f4f4f5;
+    }
+
+    .combobox-item.selected {
+      background: rgba(192, 22, 37, 0.08);
+      color: #c01625;
+    }
+
+    .combobox-item-logo {
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      object-fit: contain;
+      background: #f4f4f5;
+    }
+
+    .combobox-group-header {
+      padding: 8px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #71717a;
       background: #fafafa;
-      border: 1.5px solid #e5e5e5;
+      position: sticky;
+      top: 49px;
     }
 
-    .checkbox-card:hover {
+    /* Chips */
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: rgba(192, 22, 37, 0.08);
+      color: #c01625;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .chip-remove {
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.15s;
+      display: flex;
+    }
+
+    .chip-remove:hover {
+      opacity: 1;
+    }
+
+    /* Gender toggle */
+    .gender-btn {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px 12px;
+      border: 1.5px solid #e4e4e7;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      background: white;
+    }
+
+    .gender-btn:hover {
       border-color: #c01625;
-      background: #fff;
+      background: rgba(192, 22, 37, 0.02);
+    }
+
+    .gender-btn.selected {
+      border-color: #c01625;
+      background: linear-gradient(135deg, rgba(192, 22, 37, 0.06) 0%, rgba(192, 22, 37, 0.1) 100%);
+      box-shadow: 0 0 0 3px rgba(192, 22, 37, 0.1);
+    }
+
+    .gender-btn .icon {
+      width: 32px;
+      height: 32px;
+      transition: transform 0.2s;
+    }
+
+    .gender-btn:hover .icon {
+      transform: scale(1.1);
+    }
+
+    .gender-btn.selected .icon {
+      transform: scale(1.15);
+    }
+
+    /* Channel cards */
+    .channel-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 14px 8px;
+      border: 1.5px solid #e4e4e7;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      background: white;
+      min-height: 80px;
+    }
+
+    .channel-card:hover {
+      border-color: #c01625;
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     }
 
-    .checkbox-card:has(input:checked) {
-      background: linear-gradient(135deg, rgba(192, 22, 37, 0.04) 0%, rgba(192, 22, 37, 0.08) 100%);
+    .channel-card.selected {
       border-color: #c01625;
+      background: linear-gradient(135deg, rgba(192, 22, 37, 0.04) 0%, rgba(192, 22, 37, 0.08) 100%);
     }
 
-    .checkbox-card input[type="checkbox"] {
-      appearance: none;
+    .channel-card .checkmark {
+      position: absolute;
+      top: 6px;
+      right: 6px;
       width: 18px;
       height: 18px;
-      border: 2px solid #d0d0d0;
-      border-radius: 5px;
-      transition: all 0.2s ease;
-      position: relative;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-
-    .checkbox-card input[type="checkbox"]:checked {
+      border-radius: 50%;
       background: #c01625;
-      border-color: #c01625;
+      display: none;
+      align-items: center;
+      justify-content: center;
     }
 
-    .checkbox-card input[type="checkbox"]:checked::after {
-      content: '';
+    .channel-card.selected .checkmark {
+      display: flex;
+      animation: popIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popIn {
+      from {
+        transform: scale(0);
+      }
+
+      to {
+        transform: scale(1);
+      }
+    }
+
+    .channel-card .icon {
+      width: 24px;
+      height: 24px;
+      color: #71717a;
+      transition: all 0.2s;
+    }
+
+    .channel-card:hover .icon,
+    .channel-card.selected .icon {
+      color: #c01625;
+    }
+
+    .channel-card .label {
+      font-size: 11px;
+      font-weight: 500;
+      color: #71717a;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .channel-card.selected .label {
+      color: #c01625;
+    }
+
+    /* Range slider */
+    .range-slider-container {
+      position: relative;
+      padding: 10px 0;
+    }
+
+    .range-track {
+      position: relative;
+      height: 8px;
+      background: #e4e4e7;
+      border-radius: 4px;
+    }
+
+    .range-fill {
       position: absolute;
-      left: 5px;
-      top: 1px;
-      width: 4px;
-      height: 9px;
-      border: solid white;
-      border-width: 0 2px 2px 0;
-      transform: rotate(45deg);
+      height: 100%;
+      background: linear-gradient(90deg, #c01625, #e8424f);
+      border-radius: 4px;
+    }
+
+    .range-thumb {
+      position: absolute;
+      top: 50%;
+      width: 24px;
+      height: 24px;
+      background: white;
+      border: 2px solid #c01625;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      cursor: grab;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      transition: box-shadow 0.15s, transform 0.15s;
+      z-index: 2;
+    }
+
+    .range-thumb:hover {
+      box-shadow: 0 4px 12px rgba(192, 22, 37, 0.3);
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    .range-thumb:active {
+      cursor: grabbing;
+    }
+
+    .range-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 12px;
+      padding: 0 4px;
+    }
+
+    .range-label {
+      font-size: 12px;
+      color: #71717a;
+    }
+
+    .range-value-display {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .range-value-box {
+      padding: 8px 20px;
+      background: linear-gradient(135deg, rgba(192, 22, 37, 0.06) 0%, rgba(192, 22, 37, 0.1) 100%);
+      border: 1px solid rgba(192, 22, 37, 0.2);
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #c01625;
+      min-width: 70px;
+      text-align: center;
+    }
+
+    /* Budget slider */
+    .budget-container {
+      position: relative;
+    }
+
+    .budget-visual {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+      height: 50px;
+      align-items: flex-end;
+    }
+
+    .budget-bar {
+      flex: 1;
+      background: #e4e4e7;
+      border-radius: 3px 3px 0 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+    }
+
+    .budget-bar:hover {
+      background: #d4d4d8;
+    }
+
+    .budget-bar.active {
+      background: linear-gradient(180deg, #c01625, #9a111e);
+    }
+
+    .budget-display {
+      text-align: center;
+      padding: 16px;
+      background: linear-gradient(135deg, rgba(192, 22, 37, 0.06) 0%, rgba(192, 22, 37, 0.1) 100%);
+      border-radius: 12px;
+      border: 1px solid rgba(192, 22, 37, 0.2);
+    }
+
+    .budget-amount {
+      font-size: 28px;
+      font-weight: 700;
+      color: #c01625;
+      line-height: 1;
+    }
+
+    .budget-label {
+      font-size: 13px;
+      color: #71717a;
+      margin-top: 4px;
+    }
+
+    /* Timeline */
+    .timeline-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .date-visual {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px;
+      background: #f4f4f5;
+      border-radius: 12px;
+      margin-top: 16px;
+    }
+
+    .date-icon-box {
+      width: 52px;
+      height: 52px;
+      background: white;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    .date-icon-box .month {
+      font-size: 10px;
+      font-weight: 600;
+      color: #c01625;
+      text-transform: uppercase;
+    }
+
+    .date-icon-box .day {
+      font-size: 18px;
+      font-weight: 700;
+      color: #09090b;
+      line-height: 1;
+    }
+
+    .timeline-arrow {
+      color: #c01625;
+    }
+
+    .duration-badge {
+      padding: 6px 12px;
+      background: rgba(192, 22, 37, 0.1);
+      color: #c01625;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* Product group selector */
+    .selected-groups {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      min-height: 44px;
+      padding: 10px;
+      background: #fafafa;
+      border-radius: 8px;
+      border: 1px dashed #e4e4e7;
+    }
+
+    .selected-groups:empty::before {
+      content: 'Click below to select product groups...';
+      color: #a1a1aa;
+      font-size: 13px;
+    }
+
+    .group-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      background: white;
+      border: 1px solid #e4e4e7;
+      border-radius: 6px;
+      font-size: 12px;
+      color: #09090b;
+    }
+
+    .group-chip .category-label {
+      color: #71717a;
+      font-size: 10px;
+      background: #f4f4f5;
+      padding: 2px 6px;
+      border-radius: 4px;
     }
 
     /* Button styling */
     .btn-primary {
-      background: linear-gradient(135deg, #c01625 0%, #9a111e 100%);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-primary::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
-      transition: left 0.5s ease;
-    }
-
-    .btn-primary:hover::before {
-      left: 100%;
+      background: #c01625;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 40px rgba(192, 22, 37, 0.35);
+      background: #9a111e;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(192, 22, 37, 0.4);
     }
 
     .btn-primary:active {
-      transform: translateY(-1px);
+      transform: translateY(0);
     }
 
-    /* Staggered animations */
+    /* Animations */
     .animate-in {
       animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       opacity: 0;
@@ -247,11 +652,6 @@
       animation-delay: 0.4s;
     }
 
-    .delay-5 {
-      animation-delay: 0.5s;
-    }
-
-    /* Loading spinner */
     .loading-spinner {
       border: 2px solid rgba(255, 255, 255, 0.3);
       border-top: 2px solid #fff;
@@ -271,7 +671,6 @@
       }
     }
 
-    /* Success animation */
     .success-checkmark {
       animation: scaleIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
@@ -288,23 +687,11 @@
       }
     }
 
-    /* Select dropdown styling */
-    select.form-input {
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23666666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 14px center;
-      background-size: 16px;
-      padding-right: 44px;
-    }
-
-    /* Section divider */
     .section-divider {
       height: 1px;
       background: linear-gradient(90deg, transparent, #e5e5e5, transparent);
     }
 
-    /* Sticky left panel */
     @media (min-width: 1024px) {
       .left-content {
         position: sticky;
@@ -312,11 +699,344 @@
       }
     }
 
-    /* Form card */
     .form-card {
       background: #ffffff;
       border: 1px solid #e5e5e5;
-      /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 8px 40px rgba(0, 0, 0, 0.04); */
+    }
+
+    .combobox-dropdown::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .combobox-dropdown::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .combobox-dropdown::-webkit-scrollbar-thumb {
+      background: #d4d4d8;
+      border-radius: 3px;
+    }
+
+    /* Campaign Objective Cards */
+    .objective-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px 12px;
+      border: 1.5px solid #e4e4e7;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      background: white;
+      text-align: center;
+    }
+
+    .objective-card:hover {
+      border-color: #c01625;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .objective-card.selected {
+      border-color: #c01625;
+      background: linear-gradient(135deg, rgba(192, 22, 37, 0.04) 0%, rgba(192, 22, 37, 0.08) 100%);
+      box-shadow: 0 0 0 3px rgba(192, 22, 37, 0.1);
+    }
+
+    .objective-card .icon {
+      width: 32px;
+      height: 32px;
+      color: #71717a;
+      transition: all 0.2s;
+    }
+
+    .objective-card:hover .icon,
+    .objective-card.selected .icon {
+      color: #c01625;
+      transform: scale(1.1);
+    }
+
+    .objective-card .label {
+      font-size: 12px;
+      font-weight: 500;
+      color: #71717a;
+      line-height: 1.3;
+    }
+
+    .objective-card.selected .label {
+      color: #c01625;
+    }
+
+    /* Duration Presets */
+    .duration-preset {
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #71717a;
+      background: #f4f4f5;
+      border: 1px solid transparent;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .duration-preset:hover {
+      background: #e4e4e7;
+      color: #09090b;
+    }
+
+    .duration-preset.selected {
+      background: rgba(192, 22, 37, 0.1);
+      color: #c01625;
+      border-color: rgba(192, 22, 37, 0.3);
+    }
+
+    /* Timeline Visual */
+    .timeline-visual-container {
+      background: linear-gradient(135deg, #fafafa 0%, #f4f4f5 100%);
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid #e4e4e7;
+    }
+
+    .timeline-visual {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .timeline-card {
+      flex: 1;
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      border: 1.5px solid #e4e4e7;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .timeline-card:hover {
+      border-color: #c01625;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .timeline-card.has-date {
+      border-color: #c01625;
+      background: linear-gradient(135deg, rgba(192, 22, 37, 0.02) 0%, rgba(192, 22, 37, 0.05) 100%);
+    }
+
+    .timeline-card-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #a1a1aa;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .timeline-card.has-date .timeline-card-header {
+      color: #c01625;
+    }
+
+    .timeline-card-date {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .timeline-card-date .date-day {
+      font-size: 32px;
+      font-weight: 700;
+      color: #d4d4d8;
+      line-height: 1;
+    }
+
+    .timeline-card.has-date .date-day {
+      color: #c01625;
+    }
+
+    .timeline-card-date .date-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .timeline-card-date .date-month {
+      font-size: 14px;
+      font-weight: 600;
+      color: #71717a;
+    }
+
+    .timeline-card.has-date .date-month {
+      color: #09090b;
+    }
+
+    .timeline-card-date .date-year {
+      font-size: 12px;
+      color: #a1a1aa;
+    }
+
+    .timeline-connector {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 120px;
+    }
+
+    .connector-line {
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(90deg, #e4e4e7, #c01625, #e4e4e7);
+      border-radius: 1px;
+    }
+
+    .connector-duration {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      background: white;
+      border: 1.5px solid #e4e4e7;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #71717a;
+      white-space: nowrap;
+    }
+
+    .connector-duration.active {
+      background: linear-gradient(135deg, #c01625, #9a111e);
+      border-color: #c01625;
+      color: white;
+    }
+
+    .connector-duration.active svg {
+      color: white;
+    }
+
+    /* Product Group Locked State */
+    .product-group-locked {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px;
+      background: linear-gradient(135deg, #fafafa 0%, #f4f4f5 100%);
+      border: 2px dashed #e4e4e7;
+      border-radius: 12px;
+      cursor: not-allowed;
+    }
+
+    .locked-icon-box {
+      width: 44px;
+      height: 44px;
+      background: white;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #a1a1aa;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      flex-shrink: 0;
+    }
+
+    .locked-content {
+      flex: 1;
+    }
+
+    .locked-title {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #71717a;
+      margin-bottom: 2px;
+    }
+
+    .locked-desc {
+      display: block;
+      font-size: 12px;
+      color: #a1a1aa;
+      line-height: 1.4;
+    }
+
+    .locked-arrow {
+      width: 32px;
+      height: 32px;
+      background: rgba(192, 22, 37, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #c01625;
+      animation: bounceUp 1.5s ease-in-out infinite;
+    }
+
+    @keyframes bounceUp {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+
+    /* Product Group Unlocked State */
+    .product-group-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .industry-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: linear-gradient(135deg, rgba(192, 22, 37, 0.08) 0%, rgba(192, 22, 37, 0.12) 100%);
+      border: 1px solid rgba(192, 22, 37, 0.2);
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #c01625;
+    }
+
+    .selected-count {
+      font-size: 12px;
+      color: #71717a;
+    }
+
+    .selected-groups:empty {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 60px;
+      border-style: dashed;
+    }
+
+    .selected-groups:empty::before {
+      content: 'Search below to add product groups';
+      color: #a1a1aa;
+      font-size: 13px;
+    }
+
+    @media (max-width: 640px) {
+      .timeline-visual {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .timeline-connector {
+        flex-direction: column;
+        min-width: auto;
+        width: 100%;
+      }
+
+      .connector-line {
+        width: 2px;
+        height: 20px;
+        background: linear-gradient(180deg, #e4e4e7, #c01625, #e4e4e7);
+      }
     }
   </style>
 </head>
@@ -326,191 +1046,279 @@
   <div class="min-h-screen flex flex-col lg:flex-row">
 
     <!-- Left Panel - Company Info -->
-    <aside class="left-panel w-full lg:w-[420px] xl:w-[480px] flex-shrink-0 p-8">
+    <aside class="left-panel w-full lg:w-[420px] xl:w-[520px] flex-shrink-0 p-8">
       <div class="left-content">
-        <!-- Logo -->
         <div class="animate-in mb-12">
           <div class="flex w-full justify-center items-center">
             <img src="/ep-new-logo.png" alt="Excellent Publicity" class="h-8 md:h-44">
           </div>
         </div>
 
-        <!-- Headline -->
         <div class="animate-in delay-1 mb-8">
           <h1 class="font-display text-3xl xl:text-4xl font-bold text-text-primary leading-tight mb-4">
-            Let's Create Your Next Big Campaign
+            Media Solutions for Your Brand Growth
           </h1>
-          <p class="text-text-secondary leading-relaxed">
-            India's leading outdoor advertising agency. We transform brand visions into memorable outdoor experiences
-            across 500+ cities.
+          <p class="text-text-secondary leading-relaxed text-base">
+            From Transit Media to Digital Marketing, we bridge the gap between your brand and its audience. Experience
+            transparent, efficient, and data-driven advertising.
           </p>
         </div>
 
-        <!-- Stats -->
         <div class="animate-in delay-2 grid grid-cols-2 gap-4 mb-8">
           <div class="stat-card">
-            <div class="text-2xl xl:text-3xl font-bold text-primary mb-1">500+</div>
-            <div class="text-sm text-text-tertiary">Cities Covered</div>
-          </div>
-          <div class="stat-card">
-            <div class="text-2xl xl:text-3xl font-bold text-primary mb-1">10K+</div>
-            <div class="text-sm text-text-tertiary">Campaigns</div>
-          </div>
-          <div class="stat-card">
-            <div class="text-2xl xl:text-3xl font-bold text-primary mb-1">15+</div>
-            <div class="text-sm text-text-tertiary">Years Experience</div>
-          </div>
-          <div class="stat-card">
-            <div class="text-2xl xl:text-3xl font-bold text-primary mb-1">1000+</div>
+            <div class="text-2xl xl:text-3xl font-bold text-primary mb-1">3,000+</div>
             <div class="text-sm text-text-tertiary">Happy Clients</div>
           </div>
-        </div>
-
-        <!-- Services -->
-        <div class="animate-in delay-3 mb-8">
-          <h3 class="text-xs font-medium text-text-tertiary uppercase tracking-widest mb-4">Our Services</h3>
-          <div class="flex flex-wrap gap-2">
-            <span class="service-tag">Billboards</span>
-            <span class="service-tag">Transit Media</span>
-            <span class="service-tag">Mall Activations</span>
-            <span class="service-tag">Digital OOH</span>
-            <span class="service-tag">Events</span>
-            <span class="service-tag">BTL Solutions</span>
+          <div class="stat-card">
+            <div class="text-2xl xl:text-3xl font-bold text-primary mb-1">100+</div>
+            <div class="text-sm text-text-tertiary">Team Members</div>
+          </div>
+          <div class="stat-card">
+            <div class="text-2xl xl:text-3xl font-bold text-primary mb-1">5,00,000+</div>
+            <div class="text-sm text-text-tertiary">Media Options</div>
+          </div>
+          <div class="stat-card">
+            <div class="text-2xl xl:text-3xl font-bold text-primary mb-1">1,50,000+</div>
+            <div class="text-sm text-text-tertiary">Campaigns Executed</div>
           </div>
         </div>
 
-        <!-- Contact Info -->
-        <div class="animate-in delay-4 pt-8 border-t border-border-light">
+        <!-- <div class="animate-in delay-3 mb-8">
+          <h3 class="text-xs font-medium text-text-tertiary uppercase tracking-widest mb-4">360° Advertising Solutions
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="service-tag">Transit Media</span>
+            <span class="service-tag">Outdoor (OOH)</span>
+            <span class="service-tag">Digital Marketing</span>
+            <span class="service-tag">Sports Marketing</span>
+            <span class="service-tag">BTL Activations</span>
+            <span class="service-tag">Cinema & Radio</span>
+            <span class="service-tag">Influencer Marketing</span>
+          </div>
+        </div> -->
+
+        <!-- <div class="animate-in delay-4 pt-8 border-t border-border-light">
           <h3 class="text-xs font-medium text-text-tertiary uppercase tracking-widest mb-4">Get in Touch</h3>
           <div class="space-y-3">
-            <a href="mailto:hello@excellentpublicity.com"
+            <a href="mailto:inquiry@excellentpublicity.com"
               class="flex items-center text-text-secondary hover:text-primary transition-colors">
               <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                   d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
-              <span class="text-sm">hello@excellentpublicity.com</span>
+              <span class="text-sm">inquiry@excellentpublicity.com</span>
             </a>
-            <a href="tel:+919876543210"
+            <a href="tel:+919898946420"
               class="flex items-center text-text-secondary hover:text-primary transition-colors">
               <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                   d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
-              <span class="text-sm">+91 98765 43210</span>
+              <span class="text-sm">+91 989 894 6420</span>
             </a>
           </div>
-        </div>
+        </div> -->
 
-        <!-- Footer for mobile -->
-        <div class="lg:hidden mt-8 pt-8 border-t border-border-light">
-          <p class="text-text-tertiary text-xs">&copy; 2024 Excellent Publicity. All rights reserved.</p>
-        </div>
+        <!-- <div class="lg:hidden mt-8 pt-8 border-t border-border-light">
+          <p class="text-text-tertiary text-xs">&copy; 2025 Excellent Publicity. All rights reserved.</p>
+        </div> -->
+
+
       </div>
     </aside>
 
     <!-- Right Panel - Form -->
-    <main class="flex-1 p-6 lg:p-12 lg:pl-8 border-x border-red-100 flex justify-center items-center w-full">
-      <div class="max-w-2xl mx-auto lg:mx-0">
+    <main
+      class="flex-1 p-6 lg:p-12 lg:pl-8 border-x border-red-100 flex justify-center items-start w-full overflow-y-auto">
+      <div class="max-w-2xl mx-auto lg:mx-0 w-full py-8">
 
-        <!-- Form Header -->
         <div class="mb-10 animate-in">
           <span class="text-xs font-medium text-primary uppercase tracking-widest">Campaign Brief</span>
           <h2 class="font-display text-2xl md:text-3xl font-bold text-text-primary mt-2">Tell us about your campaign
           </h2>
-          <p class="text-text-secondary mt-2">Fill out the form below and our team will get back to you within 24 hours.
-          </p>
+          <p class="text-text-secondary mt-2">Fill out the form below and get a customized media plan.</p>
         </div>
 
-        <!-- Form Card -->
         <div class="form-card rounded-2xl p-6 md:p-8 animate-in delay-1">
           <form id="campaignForm" class="space-y-8">
 
-            <!-- Brand Information -->
+            <!-- Section 1: Brand Information -->
             <section>
-              <h3 class="text-sm font-semibold text-text-primary mb-4 flex items-center">
+              <h3 class="text-sm font-semibold text-text-primary mb-5 flex items-center">
                 <span
                   class="w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-xs font-bold mr-2">1</span>
                 Brand Information
               </h3>
-              <div class="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label class="block text-sm text-text-secondary mb-1.5" for="brandName">Brand Name <span
-                      class="text-primary">*</span></label>
-                  <input type="text" id="brandName" name="brandName" required
-                    class="form-input w-full rounded-xl px-4 py-3 text-sm" placeholder="Enter brand name">
+
+              <div class="space-y-5">
+                <!-- Brand Name with Autocomplete -->
+                <div class="combobox-container" id="brandCombobox">
+                  <label class="form-label">Brand Name <span class="required">*</span></label>
+                  <div class="relative">
+                    <input type="text" id="brandName" name="brandName" required autocomplete="off"
+                      class="form-input pr-10" placeholder="Start typing brand name...">
+                    <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                      <svg class="w-4 h-4 text-text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="combobox-dropdown" id="brandDropdown">
+                    <div class="p-3 text-sm text-text-tertiary text-center">Type to search brands...</div>
+                  </div>
                 </div>
-                <div>
-                  <label class="block text-sm text-text-secondary mb-1.5" for="industry">Industry <span
-                      class="text-primary">*</span></label>
-                  <select id="industry" name="industry" required class="form-input w-full rounded-xl px-4 py-3 text-sm">
-                    <option value="">Select industry</option>
-                    <option value="FMCG">FMCG</option>
-                    <option value="Healthcare">Healthcare</option>
-                    <option value="Automotive">Automotive</option>
-                    <option value="Real Estate">Real Estate</option>
-                    <option value="Education">Education</option>
-                    <option value="Finance">Finance</option>
-                    <option value="E-commerce">E-commerce</option>
-                    <option value="Retail">Retail</option>
-                    <option value="Tech/IT">Tech/IT</option>
-                    <option value="Entertainment">Entertainment</option>
-                    <option value="Other">Other</option>
-                  </select>
+
+                <!-- Industry Combobox -->
+                <div class="combobox-container" id="industryCombobox">
+                  <label class="form-label">Industry <span class="required">*</span></label>
+                  <div class="relative">
+                    <input type="text" id="industryInput" name="industry" required autocomplete="off"
+                      class="form-input pr-10 cursor-pointer" placeholder="Select or search industry..." readonly>
+                    <input type="hidden" id="industryValue" name="industryValue">
+                    <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                      <svg class="w-4 h-4 text-text-tertiary transition-transform" id="industryChevron" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="combobox-dropdown" id="industryDropdown">
+                    <div class="combobox-search">
+                      <input type="text" id="industrySearch" placeholder="Search industries...">
+                    </div>
+                    <div id="industryList"></div>
+                  </div>
                 </div>
-                <div class="md:col-span-2">
-                  <label class="block text-sm text-text-secondary mb-1.5" for="productCategory">Product/Service
-                    Category</label>
-                  <input type="text" id="productCategory" name="productCategory"
-                    class="form-input w-full rounded-xl px-4 py-3 text-sm"
-                    placeholder="e.g., Skincare, Electric Vehicles, Online Banking">
+
+                <!-- Product Group Multi-Select -->
+                <div>
+                  <label class="form-label">Product Groups</label>
+
+                  <!-- Locked State - Show when no industry selected -->
+                  <div id="productGroupLocked" class="product-group-locked">
+                    <div class="locked-icon-box">
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                      </svg>
+                    </div>
+                    <div class="locked-content">
+                      <span class="locked-title">Select an Industry First</span>
+                      <span class="locked-desc">Product groups are categorized by industry. Pick your industry above to unlock this field.</span>
+                    </div>
+                    <div class="locked-arrow">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"/>
+                      </svg>
+                    </div>
+                  </div>
+
+                  <!-- Unlocked State - Show when industry is selected -->
+                  <div id="productGroupUnlocked" style="display: none;">
+                    <div class="product-group-header">
+                      <div class="industry-badge" id="selectedIndustryBadge">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                        <span id="industryBadgeText">Industry</span>
+                      </div>
+                      <span class="selected-count" id="selectedCount">0 selected</span>
+                    </div>
+                    <div class="selected-groups mb-3" id="selectedGroups"></div>
+                    <div class="combobox-container" id="productGroupCombobox">
+                      <div class="relative">
+                        <input type="text" id="productGroupInput" autocomplete="off" class="form-input pr-10"
+                          placeholder="Search and add product groups...">
+                        <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                          <svg class="w-4 h-4 text-text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="combobox-dropdown" id="productGroupDropdown" style="max-height: 320px;"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </section>
 
             <div class="section-divider"></div>
 
-            <!-- Target Audience -->
+            <!-- Section 2: Target Audience -->
             <section>
-              <h3 class="text-sm font-semibold text-text-primary mb-4 flex items-center">
+              <h3 class="text-sm font-semibold text-text-primary mb-5 flex items-center">
                 <span
                   class="w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-xs font-bold mr-2">2</span>
                 Target Audience
               </h3>
-              <div class="grid md:grid-cols-2 gap-4">
+
+              <div class="space-y-6">
+                <!-- Age Range Slider -->
                 <div>
-                  <label class="block text-sm text-text-secondary mb-1.5" for="targetAgeRange">Age Range <span
-                      class="text-primary">*</span></label>
-                  <select id="targetAgeRange" name="targetAgeRange" required
-                    class="form-input w-full rounded-xl px-4 py-3 text-sm">
-                    <option value="">Select age range</option>
-                    <option value="18-24">18-24</option>
-                    <option value="25-34">25-34</option>
-                    <option value="35-44">35-44</option>
-                    <option value="45-54">45-54</option>
-                    <option value="55+">55+</option>
-                    <option value="All Ages">All Ages</option>
-                  </select>
+                  <label class="form-label">Age Range <span class="required">*</span></label>
+                  <div class="range-value-display">
+                    <div class="range-value-box" id="minAgeDisplay">18</div>
+                    <span class="text-text-tertiary">to</span>
+                    <div class="range-value-box" id="maxAgeDisplay">65</div>
+                    <span class="text-sm text-text-tertiary">years</span>
+                  </div>
+                  <div class="range-slider-container">
+                    <div class="range-track">
+                      <div class="range-fill" id="ageFill"></div>
+                      <div class="range-thumb" id="minAgeThumb" data-value="18"></div>
+                      <div class="range-thumb" id="maxAgeThumb" data-value="65"></div>
+                    </div>
+                    <div class="range-labels">
+                      <span class="range-label">13</span>
+                      <span class="range-label">25</span>
+                      <span class="range-label">35</span>
+                      <span class="range-label">45</span>
+                      <span class="range-label">55</span>
+                      <span class="range-label">65+</span>
+                    </div>
+                  </div>
+                  <input type="hidden" id="targetAgeMin" name="targetAgeMin" value="18">
+                  <input type="hidden" id="targetAgeMax" name="targetAgeMax" value="65">
                 </div>
+
+                <!-- Gender Selection -->
                 <div>
-                  <label class="block text-sm text-text-secondary mb-1.5" for="targetGender">Gender <span
-                      class="text-primary">*</span></label>
-                  <select id="targetGender" name="targetGender" required
-                    class="form-input w-full rounded-xl px-4 py-3 text-sm">
-                    <option value="">Select gender</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="All">All</option>
-                  </select>
+                  <label class="form-label">Gender <span class="required">*</span></label>
+                  <div class="flex gap-4">
+                    <div class="gender-btn" data-value="Male" onclick="selectGender(this)">
+                      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="10" cy="14" r="5" />
+                        <path d="M19 5l-5.4 5.4M19 5h-5M19 5v5" />
+                      </svg>
+                      <span class="text-sm font-medium">Male</span>
+                    </div>
+                    <div class="gender-btn" data-value="Female" onclick="selectGender(this)">
+                      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="9" r="5" />
+                        <path d="M12 14v7M9 18h6" />
+                      </svg>
+                      <span class="text-sm font-medium">Female</span>
+                    </div>
+                    <div class="gender-btn" data-value="All" onclick="selectGender(this)">
+                      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="8" cy="15" r="4" />
+                        <path d="M8 19v3M6 20h4" />
+                        <circle cx="16" cy="9" r="4" />
+                        <path d="M21 4l-4 4M21 4h-4M21 4v4" />
+                      </svg>
+                      <span class="text-sm font-medium">Both</span>
+                    </div>
+                  </div>
+                  <input type="hidden" id="targetGender" name="targetGender" required>
                 </div>
               </div>
             </section>
 
             <div class="section-divider"></div>
 
-            <!-- Campaign Details -->
+            <!-- Section 3: Campaign Details -->
             <section>
-              <h3 class="text-sm font-semibold text-text-primary mb-4 flex items-center">
+              <h3 class="text-sm font-semibold text-text-primary mb-5 flex items-center">
                 <span
                   class="w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-xs font-bold mr-2">3</span>
                 Campaign Details
@@ -518,177 +1326,203 @@
 
               <!-- Primary Channels -->
               <div class="mb-6">
-                <label class="block text-sm text-text-secondary mb-3">Primary Channels <span
-                    class="text-primary">*</span></label>
-                <div class="grid grid-cols-2 gap-2">
-                  <label class="checkbox-card flex items-center p-3 rounded-lg cursor-pointer">
-                    <input type="checkbox" name="primaryChannels" value="Billboards/Hoardings">
-                    <span class="ml-2.5 text-sm text-text-primary">Billboards</span>
-                  </label>
-                  <label class="checkbox-card flex items-center p-3 rounded-lg cursor-pointer">
-                    <input type="checkbox" name="primaryChannels" value="Transit Media">
-                    <span class="ml-2.5 text-sm text-text-primary">Transit Media</span>
-                  </label>
-                  <label class="checkbox-card flex items-center p-3 rounded-lg cursor-pointer">
-                    <input type="checkbox" name="primaryChannels" value="Mall Activations">
-                    <span class="ml-2.5 text-sm text-text-primary">Mall Activations</span>
-                  </label>
-                  <label class="checkbox-card flex items-center p-3 rounded-lg cursor-pointer">
-                    <input type="checkbox" name="primaryChannels" value="On-ground Events">
-                    <span class="ml-2.5 text-sm text-text-primary">Events</span>
-                  </label>
-                  <label class="checkbox-card flex items-center p-3 rounded-lg cursor-pointer">
-                    <input type="checkbox" name="primaryChannels" value="Mobile Van">
-                    <span class="ml-2.5 text-sm text-text-primary">Mobile Van</span>
-                  </label>
-                  <label class="checkbox-card flex items-center p-3 rounded-lg cursor-pointer">
-                    <input type="checkbox" name="primaryChannels" value="Lookwalkers">
-                    <span class="ml-2.5 text-sm text-text-primary">Lookwalkers</span>
-                  </label>
-                  <label class="checkbox-card flex items-center p-3 rounded-lg cursor-pointer col-span-2">
-                    <input type="checkbox" name="primaryChannels" value="Digital OOH">
-                    <span class="ml-2.5 text-sm text-text-primary">Digital OOH (DOOH)</span>
-                  </label>
+                <label class="form-label">Primary Channels <span class="required">*</span></label>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3" id="channelsGrid">
+                  <!-- Channels will be rendered by JS -->
                 </div>
               </div>
 
               <!-- Key Regions -->
               <div class="mb-6">
-                <label class="block text-sm text-text-secondary mb-3">Key Regions <span
-                    class="text-primary">*</span></label>
+                <label class="form-label">Key Regions <span class="required">*</span></label>
                 <div class="grid grid-cols-4 gap-2 mb-3">
-                  <label class="checkbox-card flex items-center justify-center p-3 rounded-lg cursor-pointer">
+                  <label class="channel-card" style="min-height: 50px; padding: 10px;">
                     <input type="checkbox" name="keyRegions" value="Metro Cities" class="sr-only peer">
-                    <span class="text-sm text-text-primary peer-checked:text-primary">Metro</span>
+                    <span class="text-xs font-medium text-text-secondary peer-checked:text-primary">Metro</span>
+                    <div class="checkmark"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                      </svg></div>
                   </label>
-                  <label class="checkbox-card flex items-center justify-center p-3 rounded-lg cursor-pointer">
+                  <label class="channel-card" style="min-height: 50px; padding: 10px;">
                     <input type="checkbox" name="keyRegions" value="Tier-1" class="sr-only peer">
-                    <span class="text-sm text-text-primary peer-checked:text-primary">Tier-1</span>
+                    <span class="text-xs font-medium text-text-secondary peer-checked:text-primary">Tier-1</span>
+                    <div class="checkmark"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                      </svg></div>
                   </label>
-                  <label class="checkbox-card flex items-center justify-center p-3 rounded-lg cursor-pointer">
+                  <label class="channel-card" style="min-height: 50px; padding: 10px;">
                     <input type="checkbox" name="keyRegions" value="Tier-2" class="sr-only peer">
-                    <span class="text-sm text-text-primary peer-checked:text-primary">Tier-2</span>
+                    <span class="text-xs font-medium text-text-secondary peer-checked:text-primary">Tier-2</span>
+                    <div class="checkmark"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                      </svg></div>
                   </label>
-                  <label class="checkbox-card flex items-center justify-center p-3 rounded-lg cursor-pointer">
+                  <label class="channel-card" style="min-height: 50px; padding: 10px;">
                     <input type="checkbox" name="keyRegions" value="Tier-3" class="sr-only peer">
-                    <span class="text-sm text-text-primary peer-checked:text-primary">Tier-3</span>
+                    <span class="text-xs font-medium text-text-secondary peer-checked:text-primary">Tier-3</span>
+                    <div class="checkmark"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                      </svg></div>
                   </label>
                 </div>
-                <input type="text" id="specificCities" name="specificCities"
-                  class="form-input w-full rounded-xl px-4 py-3 text-sm"
+                <input type="text" id="specificCities" name="specificCities" class="form-input"
                   placeholder="Specific cities (e.g., Mumbai, Delhi, Bangalore)">
               </div>
 
               <!-- Campaign Objective -->
               <div>
-                <label class="block text-sm text-text-secondary mb-1.5" for="campaignObjective">Campaign Objective <span
-                    class="text-primary">*</span></label>
-                <select id="campaignObjective" name="campaignObjective" required
-                  class="form-input w-full rounded-xl px-4 py-3 text-sm">
-                  <option value="">Select objective</option>
-                  <option value="Brand Awareness">Brand Awareness</option>
-                  <option value="Product Launch">Product Launch</option>
-                  <option value="Lead Generation">Lead Generation</option>
-                  <option value="Event Promotion">Event Promotion</option>
-                  <option value="Seasonal Campaign">Seasonal Campaign</option>
-                </select>
+                <label class="form-label">Campaign Objective <span class="required">*</span></label>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="objectivesGrid"></div>
+                <input type="hidden" id="campaignObjective" name="campaignObjective" required>
               </div>
             </section>
 
             <div class="section-divider"></div>
 
-            <!-- Timeline & Budget -->
+            <!-- Section 4: Timeline & Budget -->
             <section>
-              <h3 class="text-sm font-semibold text-text-primary mb-4 flex items-center">
+              <h3 class="text-sm font-semibold text-text-primary mb-5 flex items-center">
                 <span
                   class="w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-xs font-bold mr-2">4</span>
                 Timeline & Budget
               </h3>
-              <div class="grid md:grid-cols-3 gap-4">
-                <div>
-                  <label class="block text-sm text-text-secondary mb-1.5" for="startDate">Start Date <span
-                      class="text-primary">*</span></label>
-                  <input type="date" id="startDate" name="startDate" required
-                    class="form-input w-full rounded-xl px-4 py-3 text-sm">
+
+              <!-- Timeline -->
+              <div class="mb-6">
+                <label class="form-label">Campaign Duration <span class="required">*</span></label>
+
+                <!-- Quick Duration Presets -->
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <button type="button" class="duration-preset" data-days="7">1 Week</button>
+                  <button type="button" class="duration-preset" data-days="14">2 Weeks</button>
+                  <button type="button" class="duration-preset" data-days="30">1 Month</button>
+                  <button type="button" class="duration-preset" data-days="60">2 Months</button>
+                  <button type="button" class="duration-preset" data-days="90">3 Months</button>
+                  <button type="button" class="duration-preset" data-days="180">6 Months</button>
+                  <button type="button" class="duration-preset" data-days="365">1 Year</button>
                 </div>
-                <div>
-                  <label class="block text-sm text-text-secondary mb-1.5" for="endDate">End Date <span
-                      class="text-primary">*</span></label>
-                  <input type="date" id="endDate" name="endDate" required
-                    class="form-input w-full rounded-xl px-4 py-3 text-sm">
+
+                <!-- Visual Timeline -->
+                <div class="timeline-visual-container">
+                  <div class="timeline-visual">
+                    <div class="timeline-card start-card" onclick="document.getElementById('startDate').showPicker()">
+                      <div class="timeline-card-header">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <span>Start Date</span>
+                      </div>
+                      <div class="timeline-card-date" id="startDateDisplay">
+                        <span class="date-day">--</span>
+                        <div class="date-details">
+                          <span class="date-month">Select</span>
+                          <span class="date-year">Date</span>
+                        </div>
+                      </div>
+                      <input type="date" id="startDate" name="startDate" required class="sr-only">
+                    </div>
+
+                    <div class="timeline-connector">
+                      <div class="connector-line"></div>
+                      <div class="connector-duration" id="durationBadge">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>-- days</span>
+                      </div>
+                      <div class="connector-line"></div>
+                    </div>
+
+                    <div class="timeline-card end-card" onclick="document.getElementById('endDate').showPicker()">
+                      <div class="timeline-card-header">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                        </svg>
+                        <span>End Date</span>
+                      </div>
+                      <div class="timeline-card-date" id="endDateDisplay">
+                        <span class="date-day">--</span>
+                        <div class="date-details">
+                          <span class="date-month">Select</span>
+                          <span class="date-year">Date</span>
+                        </div>
+                      </div>
+                      <input type="date" id="endDate" name="endDate" required class="sr-only">
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <label class="block text-sm text-text-secondary mb-1.5" for="budgetRange">Budget <span
-                      class="text-primary">*</span></label>
-                  <select id="budgetRange" name="budgetRange" required
-                    class="form-input w-full rounded-xl px-4 py-3 text-sm">
-                    <option value="">Select budget</option>
-                    <option value="Under 5L">Under 5L</option>
-                    <option value="5-10L">5-10L</option>
-                    <option value="10-25L">10-25L</option>
-                    <option value="25-50L">25-50L</option>
-                    <option value="50L-1Cr">50L-1Cr</option>
-                    <option value="Above 1Cr">Above 1Cr</option>
-                  </select>
+              </div>
+
+              <!-- Budget -->
+              <div class="budget-container">
+                <label class="form-label">Budget <span class="required">*</span></label>
+                <div class="budget-visual" id="budgetBars"></div>
+                <div class="budget-display">
+                  <div class="budget-amount" id="budgetAmount">Select Budget</div>
+                  <div class="budget-label" id="budgetLabelText">Click on the bars above</div>
                 </div>
+                <input type="hidden" id="budgetRange" name="budgetRange" required>
               </div>
             </section>
 
             <div class="section-divider"></div>
 
-            <!-- Additional Requirements -->
+            <!-- Section 5: Additional Details -->
             <section>
-              <h3 class="text-sm font-semibold text-text-primary mb-4 flex items-center">
+              <h3 class="text-sm font-semibold text-text-primary mb-5 flex items-center">
                 <span
                   class="w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-xs font-bold mr-2">5</span>
                 Additional Details
               </h3>
               <textarea id="additionalRequirements" name="additionalRequirements" rows="3"
-                class="form-input w-full rounded-xl px-4 py-3 text-sm resize-none"
+                class="form-input resize-none"
                 placeholder="Any specific requirements, creative direction, or additional information..."></textarea>
             </section>
 
             <div class="section-divider"></div>
 
-            <!-- Contact Details -->
+            <!-- Section 6: Contact Details -->
             <section>
-              <h3 class="text-sm font-semibold text-text-primary mb-4 flex items-center">
+              <h3 class="text-sm font-semibold text-text-primary mb-5 flex items-center">
                 <span
                   class="w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-xs font-bold mr-2">6</span>
                 Contact Details
               </h3>
               <div class="grid md:grid-cols-3 gap-4">
                 <div>
-                  <label class="block text-sm text-text-secondary mb-1.5" for="contactName">Name <span
-                      class="text-primary">*</span></label>
-                  <input type="text" id="contactName" name="contactName" required
-                    class="form-input w-full rounded-xl px-4 py-3 text-sm" placeholder="Your name">
+                  <label class="form-label" for="contactName">Name <span class="required">*</span></label>
+                  <input type="text" id="contactName" name="contactName" required class="form-input"
+                    placeholder="Your name">
                 </div>
                 <div>
-                  <label class="block text-sm text-text-secondary mb-1.5" for="contactEmail">Email <span
-                      class="text-primary">*</span></label>
-                  <input type="email" id="contactEmail" name="contactEmail" required
-                    class="form-input w-full rounded-xl px-4 py-3 text-sm" placeholder="your@email.com">
+                  <label class="form-label" for="contactEmail">Email <span class="required">*</span></label>
+                  <input type="email" id="contactEmail" name="contactEmail" required class="form-input"
+                    placeholder="your@email.com">
                 </div>
                 <div>
-                  <label class="block text-sm text-text-secondary mb-1.5" for="contactPhone">Phone <span
-                      class="text-primary">*</span></label>
-                  <input type="tel" id="contactPhone" name="contactPhone" required
-                    class="form-input w-full rounded-xl px-4 py-3 text-sm" placeholder="+91 98765 43210">
+                  <label class="form-label" for="contactPhone">Phone <span class="required">*</span></label>
+                  <input type="tel" id="contactPhone" name="contactPhone" required class="form-input"
+                    placeholder="+91 98765 43210">
                 </div>
               </div>
             </section>
 
             <!-- Submit Button -->
-            <div class="pt-2">
+            <div class="pt-4">
               <button type="submit" id="submitBtn"
-                class="btn-primary w-full py-4 rounded-xl text-white font-medium text-base flex items-center justify-center">
+                class="btn-primary w-full py-4 rounded-xl text-white font-semibold text-base flex items-center justify-center gap-2">
                 <span id="btnText">Submit Campaign Brief</span>
-                <svg id="btnArrow" class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3">
-                  </path>
+                <svg id="btnArrow" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
-                <div id="btnLoader" class="loading-spinner hidden ml-3"></div>
+                <div id="btnLoader" class="loading-spinner hidden"></div>
               </button>
             </div>
           </form>
@@ -725,9 +1559,8 @@
           </div>
         </div>
 
-        <!-- Desktop Footer -->
         <div class="hidden lg:block mt-8">
-          <p class="text-text-tertiary text-xs">&copy; 2024 Excellent Publicity. All rights reserved.</p>
+          <p class="text-text-tertiary text-xs">&copy; 2025 Excellent Publicity. All rights reserved.</p>
         </div>
       </div>
     </main>
@@ -735,6 +1568,605 @@
   </div>
 
   <script>
+    // Category data from JSON
+    const categoryData = [{ "super_category": "Agriculture", "product_groups_array": ["Agri Products Range", "Agri-corporate", "Farm Equipments", "Fertilizers", "Pesticides", "Ret Agri Products Range", "Ret Fertilizers", "Ret Pesticides", "Ret Seeds/planting Material", "Seeds/planting Material"] }, { "super_category": "Alcoholic Drinks", "product_groups_array": ["Liquor", "Liquor-beer", "Ret Liquor"] }, { "super_category": "Auto", "product_groups_array": ["Auto-air Freshners", "Auto-auto Accessories", "Auto-auto Spares", "Auto-automobiles Range", "Auto-automotive Batteries", "Auto-automotive Fuel", "Auto-cars", "Auto-commercial Vehicles", "Auto-corporate", "Auto-other Auto Prod&serv", "Auto-tractors", "Auto-two Wheelers", "Auto-tyres", "Ret Auto-auto Accessories", "Ret Auto-auto Spares", "Ret Auto-automobiles Range", "Ret Auto-automotive Batteries", "Ret Auto-automotive Fuel", "Ret Auto-cars", "Ret Auto-commercial Vehicles", "Ret Auto-other Auto Prod&serv", "Ret Auto-tractors", "Ret Auto-two Wheelers", "Ret Auto-tyres", "Ret Farm Equipments"] }, { "super_category": "Babycare", "product_groups_array": ["Baby Foods", "Baby Massage Oil/lotion/creams", "Childcare Products Range", "Diapers", "Gripe Water"] }, { "super_category": "Banking/Finance/Investment", "product_groups_array": ["Atm Services/debit Cards", "Audited/unaudited Financial Re", "Balance Sheet", "Banking-agricultural", "Banking-anywhere Banking", "Banking-corporate", "Banking-investment Banking", "Banking-retail Banking", "Banking-services & Products", "Bonds", "Chairmans Speech", "Chit Fund/benefit Fund", "Credit Cards", "Depository Accounts", "Financial Inst-corporate", "Fixed Deposits", "Forex Services", "Insurance Gen-agriculture", "Insurance Gen-automobile", "Insurance Gen-business", "Insurance Gen-educational", "Insurance Gen-health/accidents", "Insurance Gen-home/household", "Insurance Gen-travel", "Insurance-general", "Insurance-life", "Loans-auto", "Loans-consumer", "Loans-education", "Loans-housing/construction", "Loans-mortgage", "Loans-multiple", "Loans-personal/professional", "Mutual Funds", "Nbfcs-corporate", "Other Banking Services", "Other Nbfcs Services", "Public Issues", "Ret Forex Services", "Ret Insurance Gen-health/accid", "Ret Insurance-general", "Ret Insurance-life", "Ret Loans-housing/construction", "Ret Loans-multiple", "Ret Mutual Funds", "Saving Schemes", "Securities/sharebroking Orgn"] }, { "super_category": "Building, Industrial & Land Materials/Equipments", "product_groups_array": ["Air Compressors", "Bldg/indus/land Mat-corporate", "Building Materials/systems", "Cement", "Corporate-industrial/b2b", "Doors", "Earth Moving Equipment", "Elevators", "Hand/machine Tools", "Industrial Equipments/products/b2b", "Industrial Glass", "Loft Tanks", "Paints", "Pipes/pvc Fittings", "Protective Coatings", "Pumps", "Ret Air Compressors", "Ret Building Materials/systems", "Ret Cement", "Ret Doors", "Ret Earth Moving Equipment", "Ret Hand/machine Tools", "Ret Industrial Equip/products", "Ret Industrial Glass", "Ret Loft Tanks", "Ret Paints", "Ret Pipes/pvc Fittings", "Ret Protective Coatings", "Ret Pumps", "Ret Roofings", "Ret Sanitary Wares", "Ret Steels", "Ret Sun Control Films", "Ret Tarpaulins", "Ret Tiles & Floorings", "Ret Wall Papers", "Ret Weighing Machines/scales", "Roofings", "Sanitary Wares", "Shutters", "Steels", "Sun Control Films", "Tarpaulins", "Tiles & Floorings", "Wall Papers", "Weighing Machines/scales"] }, { "super_category": "Computers", "product_groups_array": ["Chips & Microprocessors", "Computer Printers", "Computer Related Range", "Desktops", "It-corporate", "Laptops/notebooks", "Networking", "Peripherals", "Ret Chips & Microprocessors", "Ret Computer Printers", "Ret Computers Related Range", "Ret Desktops", "Ret Laptops/notebooks", "Ret Networking", "Ret Peripherals", "Ret Software", "Ret Tablet Computers", "Servers/mainframes/minis", "Software", "Tablet Computers"] }, { "super_category": "Corporate/Brand Image", "product_groups_array": ["Corporate-infrastructure", "Corporate-power", "Corporate-sports", "Corporate/brand Image", "Fmcg-corporate"] }, { "super_category": "Cosmetics", "product_groups_array": ["Cosmetics Range", "Eye Make Up", "Foundations", "Lipsticks", "Make Up Kit", "Nail Enamels", "Other Makeup Cosmetics"] }, { "super_category": "Durables", "product_groups_array": ["Air Conditioners", "Air Coolers", "Air Curtains", "Air Purifiers", "Atta Chakki", "Attendance & Access Control Systems", "Boosters/antena/ch Receivers", "Clocks", "Consumer Durables/home Appliances", "Cooling Systems", "Dishwashers", "Dispensers/vending Machines", "Durables-corporate", "Electric Irons", "Electrical Switches/parts", "Fans", "Fire Extinguishers", "Gas Stoves/cooktops/induction Cookers", "Geysers/water Heaters", "Hair Dryers", "Household Ups & Inverter Batteries", "Inverters", "Kitchen Chimneys", "Kitchen Wares", "Lighting Products", "Microwave Ovens", "Mixers/grinders", "Mobile/durable Accessories", "Music Systems", "Music Systems-car Audio Systems", "Non Stick Cookwares", "Otg/ovens", "Other Business Products", "Portable Gensets", "Power Backup Systems", "Pressure Cookers/electrical Cookers", "Refrigerators", "Ret Air Conditioners", "Ret Air Coolers", "Ret Atta Chakki", "Ret Attendance/acess Control Systems", "Ret Consumer Durables/home Appliances", "Ret Cooling Systems", "Ret Dishwashers", "Ret Dispensers/vending Machine", "Ret Electrical Switches/parts", "Ret Fans", "Ret Gas Stoves/cooktops/induction Cooker", "Ret Geysers/water Heaters", "Ret Household Ups & Inverter Batteries", "Ret Inverters", "Ret Kitchen Chimneys", "Ret Kitchen Wares", "Ret Lighting Products", "Ret Mixers/grinders", "Ret Mobile/durables Accessories", "Ret Music Systems", "Ret Non Stick Cookwares", "Ret Other Business Products", "Ret Portable Gensets", "Ret Power Backup Systems", "Ret Pressure Cookers/electrical Cookers", "Ret Refrigerators", "Ret Room Heater", "Ret Sewing/knitting Machines", "Ret Solar Geysers/water Heaters", "Ret Solar Products Range", "Ret Televisions", "Ret Thermowares", "Ret Vacuum Cleaners", "Ret Vcr/vcp/vcd/dvd/hometheatr", "Ret Voltage Stabilizers", "Ret Washing Machines", "Ret Water Cooler", "Ret Water Purifiers/filters", "Ret Wires & Cables", "Room Heater", "Roti Maker", "Sewing/knitting Machines", "Soda/drink Maker", "Solar Geysers/water Heaters", "Solar Products Range", "Tea/coffee Maker", "Televisions", "Thermowares", "Toasters", "Transformers", "Ups", "Vacuum Cleaners", "Vcr/vcp/vcd/dvd/home Theatre", "Voltage Stabilizers", "Washing Machines", "Water Coolers", "Water Purifiers/filters", "Wires & Cables"] }, { "super_category": "Education", "product_groups_array": ["Educ-bpo/call Centres", "Educ-coaching Centre/comp Exam", "Educ-computer Education", "Educ-correspondence/distance Education", "Educ-digital Classroom", "Educ-ecom-education", "Educ-engineering Colleges", "Educ-events", "Educ-financial Courses", "Educ-foreign Education", "Educ-govt Universities/colleges", "Educ-management Institutes/b Schools", "Educ-medical Colleges", "Educ-medical Transcription", "Educ-multiple Courses", "Educ-other Courses", "Educ-play Schools", "Educ-schools", "Educ-vocational Training Inst"] }, { "super_category": "Food & Beverages", "product_groups_array": ["Biscuits", "Branded Atta", "Branded Salts", "Breakfast Cereals", "Breath Fresheners", "Butter/margarine", "Cake/pastry/bread", "Cereals/pulses", "Cheese/cheese Spreads", "Chewing Gum/bubble Gum", "Chocolates", "Coffee", "Cooking Paste", "Custard Powders", "Dryfruit", "Edible Oil", "Energy Drink", "Food Products Range", "Frozen Foods", "Ghee", "Honey", "Hot Beverages", "Ice Cream/frozen Desserts", "Instant Mix", "Instant Soup Mixes", "Jams/jelly/marmalades", "Milk", "Milk Beverages", "Milk Powder/condensed Milk", "Mineral Water", "Namkin", "Noodles/pasta", "Packaged Rice", "Pan Masala /zarda /gutkha", "Papads", "Pickles", "Ready To Eat Food", "Ret Branded Atta", "Ret Cake/pastry/bread", "Ret Cereals/pulses", "Ret Edible Oil", "Ret Energy Drink", "Ret Food Products Range", "Ret Frozen Foods", "Ret Ghee", "Ret Ice Cream/frozen Desserts", "Ret Milk", "Ret Mineral Water", "Ret Namkin", "Ret Packaged Rice", "Ret Pan Masala /zarda /gutkha", "Ret Papads", "Ret Soft Drink Aerated", "Ret Spices", "Ret Squashes/cordials/syrups", "Ret Sweets/other Milk Products", "Ret Tea", "Sauce/ketchup", "Soft Drink Aerated", "Soft Drink Non Aerated", "Soft Drinks Range", "Spices", "Squashes/cordials/syrups", "Sugar", "Sugar Confectionaries", "Sweets/other Milk Products", "Tea", "Vanaspati", "Vermicillies", "Wafer/chips"] }, { "super_category": "Fuel/Petroleum Products", "product_groups_array": ["Lpg Cylinders", "Lubricants", "Petroleum Products-corporate", "Ret Lpg Cylinders", "Ret Lubricants"] }, { "super_category": "Hair Care", "product_groups_array": ["Anti Lice", "Hair Care Range", "Hair Conditioners", "Hair Dyes", "Hair Oils", "Hair Wash Powder", "Other Hair Dressing", "Shampoos"] }, { "super_category": "Household Products", "product_groups_array": ["Adhesives", "Agarbatti", "Air Fresheners", "Candles", "Cupboards/safes/lockers", "Drycells", "Furniture Related Items", "Furnitures", "Gas Lighters", "Glasswares/crockeries", "Home Insecticides", "Household Cleaners", "Household Products", "Kitchen Sinks", "Locks", "Match Boxes", "Mosq Repellents", "Puja Material", "Repellants & Insecticides Rang", "Ret Adhesives", "Ret Agarbatti", "Ret Cupboards/safes/lockers", "Ret Furniture Related Items", "Ret Furnitures", "Ret Glassware/crockeries", "Ret Household Products", "Ret Kitchen Sinks", "Ret Locks", "Ret Puja Material", "Scourers", "Toilet/floor Cleaners", "Torches"] }, { "super_category": "Laundry", "product_groups_array": ["Blues", "Detergent Cakes/bars", "Pre Post Wash Products", "Ret Washing Materials Range", "Soaps Cakes/bars", "Washing Materials Range", "Washing Powders/liquids"] }, { "super_category": "Media", "product_groups_array": ["Channel Imagery", "Corporate-media", "Educ-educational Books", "Promo Branded Multiple Program", "Promo Channel Properties", "Promo Channel/brand", "Promo Program", "Promo Tag", "Publications/books", "Radio Channel Promotions", "Tv Channel Promotions"] }, { "super_category": "Miscellaneous", "product_groups_array": ["Aircrafts", "Animal Feed", "Announcements", "Art Galleries", "Associations/social/cultural Org", "Bicycles", "Boats/yachts", "Decorative Items/gifts", "Display Entertainment", "Display Obituary", "Domestic/buss Assembly Halls", "Electronics", "Ent Zones-amusement Parks", "Ent Zones-miscellaneous", "Ent Zones-multiplexes", "Ent Zones-pubs/discthqs/loungs", "Ent Zones-theatres", "Events-agriculture", "Events-auto", "Events-bfsi", "Events-bldg/indust/land Material", "Events-conferences/seminars", "Events-durables", "Events-entertainment", "Events-fashion/lifestyle", "Events-fmcg", "Events-health/fitness", "Events-industrial/b2b", "Events-interiors/home/kitchen", "Events-it", "Events-jewellery", "Events-job Fairs", "Events-liquor", "Events-media", "Events-others", "Events-pharma/healthcare", "Events-real Estate", "Events-retail", "Events-shopping", "Events-sports", "Events-telecom", "Events-textile/clothing", "Events-travel", "Filler", "Film Trailor", "Fireworks/festival Related Products", "Fitness Equipments/clinics", "Fmcg Products Range", "Gen-business Related", "Gen-personal Greetings/announcements", "Gen-property/land For Sale/rent/purchase", "Handlooms/handicrafts", "Holograms", "Libraries", "Lotteries", "Miscellaneous", "Music Album", "Musical Instruments", "Others Range", "Packaging Material", "Playground/garden Eqpt/swimming Pools", "Political Ads", "Pre-fabricated Utility Products", "Ret Animal Feed", "Ret Bicycles", "Ret Decorative Items/gifts", "Ret Electronics", "Ret Fireworks/festival Related Products", "Ret Fitness Equipments/clinics", "Ret Fmcg Products Range", "Ret Lotteries", "Ret Musical Instruments", "Ret Others Range", "Ret Playground/garden Eqpt/swimming Pool", "Ret Pre-fabricated Utility Products", "Ret Security Systems", "Ret Stationery", "Ret Surgical Goods/equipments", "Ret Toys Indoor Games", "Ret Veterinary Medicines/products", "Security Systems", "Short Program", "Social Advertisements-govt", "Social Advertisements-ngos", "Stationery", "Surgical Goods/equipments", "Temples/spiritual", "Toys Indoor Games", "Toys Indoor Games-consoles", "Veterinary Medicines/products", "Writing Instruments"] }, { "super_category": "Notices", "product_groups_array": ["Not-corp-pvt-other Industries"] }, { "super_category": "Office Automation", "product_groups_array": ["Multi-function Business Prods", "Office Automation Range", "Photo Copiers", "Ret Multi-function Buss Prods", "Ret Office Automation Rng", "Type Writers"] }, { "super_category": "Personal Accessories", "product_groups_array": ["Av Auxiliaries", "Beauty Accessories/products", "Branded Jewellery", "Calculator/electronic Diaries", "Calendars/diaries", "Camera-accessories", "Camera-digital", "Camera-film/slr", "Camera-range", "Camera-video/camcorder", "Dvd/vcd/audio Cd/cassettes", "Eyewear-glasses/frames", "Eyewear-lenses", "Footwear", "Kumkum/bindi/sindoor", "Leather Goods", "Lifestyle", "Luggage", "Mens Accessories", "Ret Av Auxillaries", "Ret Camera-accessories", "Ret Camera-digital", "Ret Eyewear-glasses/frames", "Ret Eyewear-lenses", "Ret Footwear", "Ret Leather Goods", "Ret Lifestyle", "Ret Luggage", "Ret Perfumes/deodorant", "Ret Umbrellas/rain Coats", "Ret Watches", "Ret Wearable Devices", "Retail Outlets-jewellers", "School Bags", "Shoe Polishes", "Sports Goods/accessories", "Umbrellas/rain Coats", "Watches", "Wearable Devices"] }, { "super_category": "Personal Care/Personal Hygiene", "product_groups_array": ["After Shave Lotions", "Bleach Creams", "Cleansing Tissues", "Cold Creams", "Face Wash", "Facepack/astringents/clean M", "Fairness Creams", "Female Shaving Systems", "Hair Removers", "Hand Sanitizers", "Mens Toiletries", "Moisturising Lotion/creams", "Oral Hygiene Range", "Other Face Creams", "Perfumes/deodorant", "Personal Care/health&wellness Products", "Prickly Heat Powders/lotions", "Sanitary Napkins", "Shaving Creams/lotion", "Shaving Foam", "Shaving System/razor", "Skin Care Products Range", "Talcum Powders", "Toilet Liquids", "Toilet Soaps", "Toiletries Range", "Tooth Brushes", "Tooth Pastes", "Tooth Powders", "Vanishing Cream/snows"] }, { "super_category": "Personal Healthcare", "product_groups_array": ["Acne Preparations", "Analgesic/cold Tablets", "Antacids", "Antiseptic Creams/liquids", "Artificial Sweeteners", "Chyavanprash", "Condoms", "Contraceptives", "Cough Lozenges", "Cough Syrups", "Digestives", "Eye Care", "Family Planning Methods Range", "Glucose Powders", "Health Stimulant/ginseng", "Hearing Aids", "Herbal Juices", "Laxatives/isabgols", "Medicated Dressings", "Medicated Skin Treatment", "Mouth Wash", "Optical Products Range", "Otc Products Range", "Other Health Care Products", "Petroleum Jelly", "Pharma/healthcare-corporate", "Ret Hearing Aids", "Rubs And Balms", "Vitamins/tonics/health Supplem"] }, { "super_category": "Retail", "product_groups_array": ["Display Retail Shops", "Retail Outlets-agriculture", "Retail Outlets-automobiles", "Retail Outlets-building Material/systems", "Retail Outlets-clothing/textiles/fashion", "Retail Outlets-departmental Stores", "Retail Outlets-electronics/durables", "Retail Outlets-fitness/sports", "Retail Outlets-food", "Retail Outlets-footwear", "Retail Outlets-home/interiors/furniture", "Retail Outlets-industrial/b2b", "Retail Outlets-juice/bakery Shops/icecrm", "Retail Outlets-kids Stores", "Retail Outlets-medical/pharmacy Stores", "Retail Outlets-optical", "Retail Outlets-others", "Retail Outlets-stationery/gift Articles", "Retail Outlets-sweet/namkin Shops"] }, { "super_category": "Services", "product_groups_array": ["Airlines", "Astrologers", "Astrology Products", "Auto Rental Services", "Banquets", "Beauty Parlours/salons", "Bpo (buss Proc Outsourcing)", "Chatlines", "Courier Services", "Direct Selling/network Mktg", "Dth Service Providers", "Ecom-auto Products&services", "Ecom-auto Rental Services", "Ecom-clothing/textile/fashion", "Ecom-financial Services", "Ecom-food/grocery", "Ecom-gaming", "Ecom-home/interior/furniture", "Ecom-jobs", "Ecom-matrimonials", "Ecom-media/entertainment/social Media", "Ecom-online Shopping", "Ecom-other Services", "Ecom-payment Banks", "Ecom-pharma/healthcare", "Ecom-real Estate", "Ecom-travel & Tourism", "Ecom-wallets", "Fast Food Outlets", "Helplines/infolines", "Hospital/clinics", "Hospitals/clinics-infertility", "Hotels", "Loyalty Programs/prepaid Cards", "Marriage Bureaus", "Production Houses", "Prof Serv-advertising Agencies", "Prof Serv-animal Husbandry", "Prof Serv-catering Services", "Prof Serv-consultants", "Prof Serv-educ/immigration Consultants", "Prof Serv-education Consultants", "Prof Serv-financial Services", "Prof Serv-hr Consultants", "Prof Serv-industrial/b2b", "Prof Serv-massage Parlours", "Prof Serv-orchestra/musical Parties", "Prof Serv-others", "Prof Serv-pest Control Services", "Prof Serv-real Estate Consultants", "Prof Serv-rental Services", "Properties/real Estates", "Restaurants/lodges", "Sms Services", "Studio/processing", "Tele Shopping", "Transport", "Transport-packers&movers", "Travel & Tourism"] }, { "super_category": "Telecom Products", "product_groups_array": ["Cellular Phones", "Cellular Phones-smart Phones", "Ret Cellular Phones", "Ret Cellular Phones-smart Phones", "Telecom Equipment", "Telecom Prods & Services Range"] }, { "super_category": "Telecom/Internet Service Providers", "product_groups_array": ["Basic Telecom Service", "Cellular Phone Service", "Corporate-telecom Infrastructure", "Internet Service Providers", "Other Telecommunication Service", "Ret Cellular Phone Service", "Ret Internet Service Providers", "Telecom/internet Services"] }, { "super_category": "Textiles/Clothing", "product_groups_array": ["Bed Linens", "Denim", "Dress Materials/shirtings", "Fabrics/garments/furnish Range", "Furnishings", "Hosiery", "Knitting Wool", "Mattresses/foam", "Readymade Garments", "Ret Bed Linens", "Ret Denim", "Ret Dress Materials/shirtings", "Ret Fabrics/garments/furn Rang", "Ret Furnishings", "Ret Hosiery", "Ret Mattresses/foam", "Ret Readymade Garments", "Ret Sarees", "Ret Shawls/blankets", "Ret Suitings", "Ret Towels", "Ret Winter Wear", "Sarees", "Shawls/blankets", "Suitings", "Textiles/clothing-corporate", "Threads & Accessories", "Towels", "Winter Wear"] }, { "super_category": "Tobacco & Related Products", "product_groups_array": ["Bidi", "Cigarettes", "Tobacco & Related Prods Range"] }];
+
+    // Primary channels data
+    const primaryChannels = [
+      { id: 'radio', label: 'Radio', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5.636 18.364a9 9 0 010-12.728m12.728 0a9 9 0 010 12.728M9.172 15.828a5 5 0 010-7.072m5.656 0a5 5 0 010 7.072M12 12h.01"/></svg>' },
+      { id: 'cinema', label: 'Cinema', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8h20M6 4v4M10 4v4M14 4v4M18 4v4"/></svg>' },
+      { id: 'digital', label: 'Digital', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>' },
+      { id: 'transit', label: 'Transit', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 6v6M16 6v6M4 12h16M5 18h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2zM8 18v2M16 18v2"/></svg>' },
+      { id: 'outdoor', label: 'Outdoor', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="12" rx="1"/><path d="M3 15l9-6 9 6M12 15v6M8 21h8"/></svg>' },
+      { id: 'magazine', label: 'Magazine', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>' },
+      { id: 'television', label: 'Television', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="15" rx="2"/><path d="M17 2l-5 5-5-5"/></svg>' },
+      { id: 'digital-pr', label: 'Digital PR', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>' },
+      { id: 'corporate-branding', label: 'Corporate', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg>' },
+      { id: 'sports-branding', label: 'Sports', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 000 20 14.5 14.5 0 000-20M2 12h20"/></svg>' },
+      { id: 'infilm', label: 'In-Film', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8V4h4M4 16v4h4M16 4h4v4M16 20h4v-4"/><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>' },
+      { id: 'non-traditional', label: 'Non-Trad', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>' },
+      { id: 'newspaper', label: 'Newspaper', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 12h10"/></svg>' },
+      { id: 'influencer', label: 'Influencer', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>' },
+      { id: 'inflight', label: 'Inflight', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 00-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>' },
+      { id: 'btl', label: 'BTL', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"/></svg>' },
+      { id: 'airport', label: 'Airport', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>' }
+    ];
+
+    // Budget options
+    const budgetOptions = [
+      { value: 'Under 5L', label: 'Under 5L', amount: '< ₹5 Lakh' },
+      { value: '5-10L', label: '5-10L', amount: '₹5-10 Lakh' },
+      { value: '10-25L', label: '10-25L', amount: '₹10-25 Lakh' },
+      { value: '25-50L', label: '25-50L', amount: '₹25-50 Lakh' },
+      { value: '50L-1Cr', label: '50L-1Cr', amount: '₹50L - 1 Crore' },
+      { value: '1-5Cr', label: '1-5Cr', amount: '₹1-5 Crore' },
+      { value: 'Above 5Cr', label: '5Cr+', amount: 'Above ₹5 Crore' }
+    ];
+
+    // Campaign Objectives
+    const campaignObjectives = [
+      { id: 'brand-awareness', label: 'Brand Awareness', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>' },
+      { id: 'product-launch', label: 'Product Launch', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>' },
+      { id: 'lead-generation', label: 'Lead Generation', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>' },
+      { id: 'event-promotion', label: 'Event Promotion', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>' },
+      { id: 'seasonal-campaign', label: 'Seasonal Campaign', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>' },
+      { id: 'sales-promotion', label: 'Sales Promotion', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>' }
+    ];
+
+    // State
+    let selectedProductGroups = [];
+    let selectedChannels = [];
+    let selectedBudgetIndex = -1;
+    let selectedIndustry = null;
+    let selectedObjective = null;
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function () {
+      initIndustryDropdown();
+      initProductGroupDropdown();
+      initChannels();
+      initBudget();
+      initAgeSlider();
+      initDatePickers();
+      initBrandAutocomplete();
+      initRegionCards();
+      initObjectives();
+      initDurationPresets();
+    });
+
+    // Brand Autocomplete using Clearbit API
+    function initBrandAutocomplete() {
+      const input = document.getElementById('brandName');
+      const dropdown = document.getElementById('brandDropdown');
+      let debounceTimer;
+
+      input.addEventListener('input', function () {
+        clearTimeout(debounceTimer);
+        const query = this.value.trim();
+
+        if (query.length < 2) {
+          dropdown.classList.remove('open');
+          return;
+        }
+
+        debounceTimer = setTimeout(async () => {
+          try {
+            const response = await fetch(`https://autocomplete.clearbit.com/v1/companies/suggest?query=${encodeURIComponent(query)}`);
+            const companies = await response.json();
+
+            if (companies.length > 0) {
+              dropdown.innerHTML = companies.slice(0, 8).map(company => `
+                <div class="combobox-item" onclick="selectBrand('${company.name.replace(/'/g, "\\'")}')">
+                  <img src="${company.logo}" alt="" class="combobox-item-logo" onerror="this.style.display='none'">
+                  <div>
+                    <div class="font-medium">${company.name}</div>
+                    <div class="text-xs text-text-tertiary">${company.domain}</div>
+                  </div>
+                </div>
+              `).join('');
+              dropdown.classList.add('open');
+            } else {
+              dropdown.innerHTML = '<div class="p-3 text-sm text-text-tertiary text-center">No brands found</div>';
+              dropdown.classList.add('open');
+            }
+          } catch (error) {
+            dropdown.innerHTML = '<div class="p-3 text-sm text-text-tertiary text-center">Type your brand name</div>';
+            dropdown.classList.add('open');
+          }
+        }, 300);
+      });
+
+      input.addEventListener('focus', function () {
+        if (this.value.length >= 2) {
+          dropdown.classList.add('open');
+        }
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!e.target.closest('#brandCombobox')) {
+          dropdown.classList.remove('open');
+        }
+      });
+    }
+
+    function selectBrand(name) {
+      document.getElementById('brandName').value = name;
+      document.getElementById('brandDropdown').classList.remove('open');
+    }
+
+    // Industry Dropdown
+    function initIndustryDropdown() {
+      const input = document.getElementById('industryInput');
+      const dropdown = document.getElementById('industryDropdown');
+      const searchInput = document.getElementById('industrySearch');
+      const listContainer = document.getElementById('industryList');
+      const chevron = document.getElementById('industryChevron');
+
+      const industries = categoryData.map(c => c.super_category).sort();
+
+      function renderList(filter = '') {
+        const filtered = industries.filter(i => i.toLowerCase().includes(filter.toLowerCase()));
+        listContainer.innerHTML = filtered.map(industry => `
+          <div class="combobox-item ${input.value === industry ? 'selected' : ''}" onclick="selectIndustry('${industry.replace(/'/g, "\\'")}')">
+            ${industry}
+          </div>
+        `).join('') || '<div class="p-3 text-sm text-text-tertiary text-center">No industries found</div>';
+      }
+
+      input.addEventListener('click', function () {
+        dropdown.classList.toggle('open');
+        chevron.style.transform = dropdown.classList.contains('open') ? 'rotate(180deg)' : '';
+        if (dropdown.classList.contains('open')) {
+          renderList();
+          setTimeout(() => searchInput.focus(), 50);
+        }
+      });
+
+      searchInput.addEventListener('input', function () {
+        renderList(this.value);
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!e.target.closest('#industryCombobox')) {
+          dropdown.classList.remove('open');
+          chevron.style.transform = '';
+        }
+      });
+
+      renderList();
+    }
+
+    function selectIndustry(industry) {
+      document.getElementById('industryInput').value = industry;
+      document.getElementById('industryValue').value = industry;
+      document.getElementById('industryDropdown').classList.remove('open');
+      document.getElementById('industryChevron').style.transform = '';
+
+      // Set selected industry and reset product groups
+      selectedIndustry = industry;
+      selectedProductGroups = [];
+      renderSelectedGroups();
+      updateProductGroupState();
+    }
+
+    function updateProductGroupState() {
+      const locked = document.getElementById('productGroupLocked');
+      const unlocked = document.getElementById('productGroupUnlocked');
+      const badge = document.getElementById('industryBadgeText');
+      const count = document.getElementById('selectedCount');
+
+      if (selectedIndustry) {
+        locked.style.display = 'none';
+        unlocked.style.display = 'block';
+        badge.textContent = selectedIndustry;
+        count.textContent = selectedProductGroups.length + ' selected';
+      } else {
+        locked.style.display = 'flex';
+        unlocked.style.display = 'none';
+      }
+    }
+
+    function updateSelectedCount() {
+      const count = document.getElementById('selectedCount');
+      if (count) {
+        count.textContent = selectedProductGroups.length + ' selected';
+      }
+    }
+
+    // Product Group Dropdown
+    function initProductGroupDropdown() {
+      const input = document.getElementById('productGroupInput');
+      const dropdown = document.getElementById('productGroupDropdown');
+
+      function renderList(filter = '') {
+        if (!selectedIndustry) return;
+
+        const industryData = categoryData.find(c => c.super_category === selectedIndustry);
+        if (!industryData) {
+          dropdown.innerHTML = '<div class="p-3 text-sm text-text-tertiary text-center">No product groups found</div>';
+          return;
+        }
+
+        const availableGroups = industryData.product_groups_array.filter(g =>
+          g.toLowerCase().includes(filter.toLowerCase()) &&
+          !selectedProductGroups.some(sg => sg.group === g)
+        );
+
+        if (availableGroups.length === 0) {
+          dropdown.innerHTML = filter
+            ? '<div class="p-3 text-sm text-text-tertiary text-center">No matching product groups</div>'
+            : '<div class="p-3 text-sm text-text-tertiary text-center">All product groups selected</div>';
+          return;
+        }
+
+        let html = '';
+        availableGroups.forEach(group => {
+          html += `<div class="combobox-item" onclick="selectProductGroup('${selectedIndustry.replace(/'/g, "\\'")}', '${group.replace(/'/g, "\\'")}')">
+            <svg class="w-4 h-4 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+            ${group}
+          </div>`;
+        });
+        dropdown.innerHTML = html;
+      }
+
+      input.addEventListener('focus', function () {
+        if (selectedIndustry) {
+          renderList(this.value);
+          dropdown.classList.add('open');
+        }
+      });
+
+      input.addEventListener('input', function () {
+        if (selectedIndustry) {
+          renderList(this.value);
+          dropdown.classList.add('open');
+        }
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!e.target.closest('#productGroupCombobox')) {
+          dropdown.classList.remove('open');
+        }
+      });
+    }
+
+    function selectProductGroup(category, group) {
+      if (!selectedProductGroups.some(sg => sg.group === group)) {
+        selectedProductGroups.push({ category: selectedIndustry, group });
+        renderSelectedGroups();
+      }
+      document.getElementById('productGroupInput').value = '';
+      document.getElementById('productGroupDropdown').classList.remove('open');
+    }
+
+    function removeProductGroup(index) {
+      selectedProductGroups.splice(index, 1);
+      renderSelectedGroups();
+    }
+
+    function renderSelectedGroups() {
+      const container = document.getElementById('selectedGroups');
+      if (selectedProductGroups.length === 0) {
+        container.innerHTML = '';
+        updateSelectedCount();
+        return;
+      }
+      container.innerHTML = selectedProductGroups.map((item, index) => `
+        <div class="chip">
+          ${item.group}
+          <span class="chip-remove" onclick="removeProductGroup(${index})">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </span>
+        </div>
+      `).join('');
+      updateSelectedCount();
+    }
+
+    // Primary Channels
+    function initChannels() {
+      const grid = document.getElementById('channelsGrid');
+      grid.innerHTML = primaryChannels.map(channel => `
+        <div class="channel-card" data-channel="${channel.id}" onclick="toggleChannel('${channel.id}')">
+          <div class="checkmark">
+            <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          <div class="icon">${channel.icon}</div>
+          <span class="label">${channel.label}</span>
+        </div>
+      `).join('');
+    }
+
+    function toggleChannel(id) {
+      const card = document.querySelector(`[data-channel="${id}"]`);
+      const index = selectedChannels.indexOf(id);
+
+      if (index > -1) {
+        selectedChannels.splice(index, 1);
+        card.classList.remove('selected');
+      } else {
+        selectedChannels.push(id);
+        card.classList.add('selected');
+      }
+    }
+
+    // Region Cards
+    function initRegionCards() {
+      document.querySelectorAll('input[name="keyRegions"]').forEach(input => {
+        input.addEventListener('change', function () {
+          this.closest('.channel-card').classList.toggle('selected', this.checked);
+        });
+      });
+    }
+
+    // Gender Selection
+    function selectGender(element) {
+      document.querySelectorAll('.gender-btn').forEach(btn => btn.classList.remove('selected'));
+      element.classList.add('selected');
+      document.getElementById('targetGender').value = element.dataset.value;
+    }
+
+    // Age Range Slider
+    function initAgeSlider() {
+      const track = document.querySelector('.range-track');
+      const fill = document.getElementById('ageFill');
+      const minThumb = document.getElementById('minAgeThumb');
+      const maxThumb = document.getElementById('maxAgeThumb');
+      const minDisplay = document.getElementById('minAgeDisplay');
+      const maxDisplay = document.getElementById('maxAgeDisplay');
+      const minInput = document.getElementById('targetAgeMin');
+      const maxInput = document.getElementById('targetAgeMax');
+
+      const min = 13, max = 65;
+      let minVal = 18, maxVal = 65;
+
+      function updateSlider() {
+        const trackWidth = track.offsetWidth;
+        const minPercent = ((minVal - min) / (max - min)) * 100;
+        const maxPercent = ((maxVal - min) / (max - min)) * 100;
+
+        minThumb.style.left = minPercent + '%';
+        maxThumb.style.left = maxPercent + '%';
+        fill.style.left = minPercent + '%';
+        fill.style.width = (maxPercent - minPercent) + '%';
+
+        minDisplay.textContent = minVal;
+        maxDisplay.textContent = maxVal === 65 ? '65+' : maxVal;
+        minInput.value = minVal;
+        maxInput.value = maxVal;
+      }
+
+      function handleDrag(thumb, isMin) {
+        return function (e) {
+          e.preventDefault();
+          const trackRect = track.getBoundingClientRect();
+
+          function onMove(e) {
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            let percent = (clientX - trackRect.left) / trackRect.width;
+            percent = Math.max(0, Math.min(1, percent));
+            let value = Math.round(min + percent * (max - min));
+
+            if (isMin) {
+              value = Math.min(value, maxVal - 1);
+              minVal = value;
+            } else {
+              value = Math.max(value, minVal + 1);
+              maxVal = value;
+            }
+            updateSlider();
+          }
+
+          function onEnd() {
+            document.removeEventListener('mousemove', onMove);
+            document.removeEventListener('mouseup', onEnd);
+            document.removeEventListener('touchmove', onMove);
+            document.removeEventListener('touchend', onEnd);
+          }
+
+          document.addEventListener('mousemove', onMove);
+          document.addEventListener('mouseup', onEnd);
+          document.addEventListener('touchmove', onMove);
+          document.addEventListener('touchend', onEnd);
+        };
+      }
+
+      minThumb.addEventListener('mousedown', handleDrag(minThumb, true));
+      minThumb.addEventListener('touchstart', handleDrag(minThumb, true));
+      maxThumb.addEventListener('mousedown', handleDrag(maxThumb, false));
+      maxThumb.addEventListener('touchstart', handleDrag(maxThumb, false));
+
+      updateSlider();
+    }
+
+    // Budget Selector
+    function initBudget() {
+      const container = document.getElementById('budgetBars');
+      const heights = [25, 35, 50, 65, 75, 88, 100];
+
+      container.innerHTML = budgetOptions.map((opt, i) => `
+        <div class="budget-bar" data-index="${i}" style="height: ${heights[i]}%" onclick="selectBudget(${i})"></div>
+      `).join('');
+    }
+
+    function selectBudget(index) {
+      selectedBudgetIndex = index;
+      const bars = document.querySelectorAll('.budget-bar');
+      bars.forEach((bar, i) => {
+        bar.classList.toggle('active', i <= index);
+      });
+
+      document.getElementById('budgetAmount').textContent = budgetOptions[index].amount;
+      document.getElementById('budgetLabelText').textContent = 'Selected budget range';
+      document.getElementById('budgetRange').value = budgetOptions[index].value;
+    }
+
+    // Campaign Objectives
+    function initObjectives() {
+      const grid = document.getElementById('objectivesGrid');
+      grid.innerHTML = campaignObjectives.map(obj => `
+        <div class="objective-card" data-objective="${obj.id}" onclick="selectObjective('${obj.id}', '${obj.label}')">
+          <div class="icon">${obj.icon}</div>
+          <span class="label">${obj.label}</span>
+        </div>
+      `).join('');
+    }
+
+    function selectObjective(id, label) {
+      document.querySelectorAll('.objective-card').forEach(card => card.classList.remove('selected'));
+      document.querySelector(`[data-objective="${id}"]`).classList.add('selected');
+      document.getElementById('campaignObjective').value = label;
+      selectedObjective = id;
+    }
+
+    // Duration Presets
+    function initDurationPresets() {
+      document.querySelectorAll('.duration-preset').forEach(btn => {
+        btn.addEventListener('click', function () {
+          const days = parseInt(this.dataset.days);
+          const startDate = document.getElementById('startDate');
+          const endDate = document.getElementById('endDate');
+
+          // Set start date to today if not set
+          const today = new Date();
+          if (!startDate.value) {
+            startDate.value = today.toISOString().split('T')[0];
+          }
+
+          // Calculate end date
+          const start = new Date(startDate.value);
+          const end = new Date(start);
+          end.setDate(end.getDate() + days);
+          endDate.value = end.toISOString().split('T')[0];
+
+          // Update visual
+          updateTimelineVisual();
+
+          // Update preset selection
+          document.querySelectorAll('.duration-preset').forEach(b => b.classList.remove('selected'));
+          this.classList.add('selected');
+        });
+      });
+    }
+
+    // Date Pickers
+    function initDatePickers() {
+      const today = new Date().toISOString().split('T')[0];
+      const startDate = document.getElementById('startDate');
+      const endDate = document.getElementById('endDate');
+
+      startDate.setAttribute('min', today);
+      endDate.setAttribute('min', today);
+
+      startDate.addEventListener('change', function () {
+        endDate.setAttribute('min', this.value);
+        updateTimelineVisual();
+        clearPresetSelection();
+      });
+
+      endDate.addEventListener('change', function () {
+        updateTimelineVisual();
+        clearPresetSelection();
+      });
+    }
+
+    function clearPresetSelection() {
+      document.querySelectorAll('.duration-preset').forEach(b => b.classList.remove('selected'));
+    }
+
+    function updateTimelineVisual() {
+      const startDate = document.getElementById('startDate');
+      const endDate = document.getElementById('endDate');
+      const startDisplay = document.getElementById('startDateDisplay');
+      const endDisplay = document.getElementById('endDateDisplay');
+      const durationBadge = document.getElementById('durationBadge');
+      const startCard = document.querySelector('.start-card');
+      const endCard = document.querySelector('.end-card');
+
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+      if (startDate.value) {
+        const start = new Date(startDate.value);
+        startDisplay.innerHTML = `
+          <span class="date-day">${start.getDate()}</span>
+          <div class="date-details">
+            <span class="date-month">${months[start.getMonth()]}</span>
+            <span class="date-year">${start.getFullYear()}</span>
+          </div>
+        `;
+        startCard.classList.add('has-date');
+      } else {
+        startDisplay.innerHTML = `
+          <span class="date-day">--</span>
+          <div class="date-details">
+            <span class="date-month">Select</span>
+            <span class="date-year">Date</span>
+          </div>
+        `;
+        startCard.classList.remove('has-date');
+      }
+
+      if (endDate.value) {
+        const end = new Date(endDate.value);
+        endDisplay.innerHTML = `
+          <span class="date-day">${end.getDate()}</span>
+          <div class="date-details">
+            <span class="date-month">${months[end.getMonth()]}</span>
+            <span class="date-year">${end.getFullYear()}</span>
+          </div>
+        `;
+        endCard.classList.add('has-date');
+      } else {
+        endDisplay.innerHTML = `
+          <span class="date-day">--</span>
+          <div class="date-details">
+            <span class="date-month">Select</span>
+            <span class="date-year">Date</span>
+          </div>
+        `;
+        endCard.classList.remove('has-date');
+      }
+
+      // Update duration
+      if (startDate.value && endDate.value) {
+        const start = new Date(startDate.value);
+        const end = new Date(endDate.value);
+        const days = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
+
+        let durationText = days + ' days';
+        if (days >= 365) {
+          const years = Math.floor(days / 365);
+          const remainingDays = days % 365;
+          durationText = years + (years > 1 ? ' years' : ' year');
+          if (remainingDays > 0) durationText += ` ${remainingDays}d`;
+        } else if (days >= 30) {
+          const months = Math.floor(days / 30);
+          const remainingDays = days % 30;
+          durationText = months + (months > 1 ? ' months' : ' month');
+          if (remainingDays > 0) durationText += ` ${remainingDays}d`;
+        } else if (days >= 7) {
+          const weeks = Math.floor(days / 7);
+          const remainingDays = days % 7;
+          durationText = weeks + (weeks > 1 ? ' weeks' : ' week');
+          if (remainingDays > 0) durationText += ` ${remainingDays}d`;
+        }
+
+        durationBadge.innerHTML = `
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>${durationText}</span>
+        `;
+        durationBadge.classList.add('active');
+      } else {
+        durationBadge.innerHTML = `
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>-- days</span>
+        `;
+        durationBadge.classList.remove('active');
+      }
+    }
+
+    // Form Submission
     const form = document.getElementById('campaignForm');
     const submitBtn = document.getElementById('submitBtn');
     const btnText = document.getElementById('btnText');
@@ -744,27 +2176,16 @@
     const errorMessage = document.getElementById('errorMessage');
     const errorText = document.getElementById('errorText');
 
-    // Set minimum date to today
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('startDate').setAttribute('min', today);
-    document.getElementById('endDate').setAttribute('min', today);
-
-    // Update end date min when start date changes
-    document.getElementById('startDate').addEventListener('change', function () {
-      document.getElementById('endDate').setAttribute('min', this.value);
-    });
-
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
 
-      // Validate at least one channel selected
-      const channels = document.querySelectorAll('input[name="primaryChannels"]:checked');
-      if (channels.length === 0) {
+      // Validate channels
+      if (selectedChannels.length === 0) {
         showError('Please select at least one primary channel.');
         return;
       }
 
-      // Validate at least one region selected or specific cities entered
+      // Validate regions
       const regions = document.querySelectorAll('input[name="keyRegions"]:checked');
       const specificCities = document.getElementById('specificCities').value.trim();
       if (regions.length === 0 && !specificCities) {
@@ -772,21 +2193,39 @@
         return;
       }
 
-      // Show loading state
+      // Validate gender
+      if (!document.getElementById('targetGender').value) {
+        showError('Please select target gender.');
+        return;
+      }
+
+      // Validate budget
+      if (selectedBudgetIndex === -1) {
+        showError('Please select a budget range.');
+        return;
+      }
+
+      // Validate objective
+      if (!selectedObjective) {
+        showError('Please select a campaign objective.');
+        return;
+      }
+
+      // Show loading
       submitBtn.disabled = true;
       btnText.textContent = 'Submitting...';
       btnArrow.classList.add('hidden');
       btnLoader.classList.remove('hidden');
       errorMessage.classList.add('hidden');
 
-      // Collect form data
       const formData = {
         brandName: document.getElementById('brandName').value,
-        industry: document.getElementById('industry').value,
-        productCategory: document.getElementById('productCategory').value,
-        targetAgeRange: document.getElementById('targetAgeRange').value,
+        industry: document.getElementById('industryValue').value,
+        productGroups: selectedProductGroups,
+        targetAgeMin: document.getElementById('targetAgeMin').value,
+        targetAgeMax: document.getElementById('targetAgeMax').value,
         targetGender: document.getElementById('targetGender').value,
-        primaryChannels: Array.from(channels).map(cb => cb.value),
+        primaryChannels: selectedChannels.map(id => primaryChannels.find(c => c.id === id)?.label || id),
         keyRegions: Array.from(regions).map(cb => cb.value),
         specificCities: specificCities,
         campaignObjective: document.getElementById('campaignObjective').value,
@@ -802,9 +2241,7 @@
       try {
         const response = await fetch('/api/campaign-brief', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData)
         });
 
@@ -837,6 +2274,25 @@
       form.classList.remove('hidden');
       successMessage.classList.add('hidden');
       errorMessage.classList.add('hidden');
+
+      // Reset state
+      selectedProductGroups = [];
+      selectedChannels = [];
+      selectedBudgetIndex = -1;
+      selectedIndustry = null;
+      selectedObjective = null;
+
+      renderSelectedGroups();
+      updateProductGroupState();
+      document.querySelectorAll('.channel-card.selected').forEach(c => c.classList.remove('selected'));
+      document.querySelectorAll('.gender-btn.selected').forEach(b => b.classList.remove('selected'));
+      document.querySelectorAll('.budget-bar.active').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.objective-card.selected').forEach(o => o.classList.remove('selected'));
+      document.querySelectorAll('.duration-preset.selected').forEach(p => p.classList.remove('selected'));
+      document.getElementById('budgetAmount').textContent = 'Select Budget';
+      document.getElementById('budgetLabelText').textContent = 'Click on the bars above';
+      updateTimelineVisual();
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script>

@@ -5,7 +5,9 @@
       "Bash(node:*)",
       "Bash(taskkill:*)",
       "Bash(pkill:*)",
-      "Bash(netstat:*)"
+      "Bash(netstat:*)",
+      "WebFetch(domain:excellentpublicity.com)",
+      "WebSearch"
     ]
   }
 }
