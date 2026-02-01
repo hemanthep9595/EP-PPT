@@ -67,18 +67,60 @@
       background: linear-gradient(180deg, transparent, #e5e5e5, transparent);
     }
 
+    /* Stats Marquee */
+    .stats-marquee-container {
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+
+    .stats-marquee {
+      display: flex;
+      width: fit-content;
+      animation: marquee 20s linear infinite;
+    }
+
+    .stats-marquee:hover {
+      animation-play-state: paused;
+    }
+
+    .stats-marquee-content {
+      display: flex;
+      gap: 16px;
+      padding-right: 16px;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
     .stat-card {
       background: white;
-      border: 1px solid #e5e5e5;
-      border-radius: 16px;
-      padding: 20px 24px;
+      border: 1px solid #c9c9c9;
+      border-radius: 14px;
+      padding: 16px 24px;
+      min-width: 160px;
+      flex-shrink: 0;
       transition: all 0.3s ease;
     }
 
     .stat-card:hover {
       border-color: #c01625;
       box-shadow: 0 8px 24px rgba(192, 22, 37, 0.08);
-      transform: translateY(-2px);
+    }
+
+    .stat-number {
+      font-size: 27px;
+      font-weight: 700;
+      color: #c01625;
+      line-height: 1.2;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: #71717a;
+      margin-top: 2px;
     }
 
     .service-tag {
@@ -1064,22 +1106,45 @@
           </p>
         </div>
 
-        <div class="animate-in delay-2 grid grid-cols-2 gap-4 mb-8">
-          <div class="stat-card">
-            <div class="text-2xl xl:text-3xl font-bold text-primary mb-1">3,000+</div>
-            <div class="text-sm text-text-tertiary">Happy Clients</div>
-          </div>
-          <div class="stat-card">
-            <div class="text-2xl xl:text-3xl font-bold text-primary mb-1">100+</div>
-            <div class="text-sm text-text-tertiary">Team Members</div>
-          </div>
-          <div class="stat-card">
-            <div class="text-2xl xl:text-3xl font-bold text-primary mb-1">5,00,000+</div>
-            <div class="text-sm text-text-tertiary">Media Options</div>
-          </div>
-          <div class="stat-card">
-            <div class="text-2xl xl:text-3xl font-bold text-primary mb-1">1,50,000+</div>
-            <div class="text-sm text-text-tertiary">Campaigns Executed</div>
+        <div class="animate-in delay-2 mb-8 stats-marquee-container">
+          <div class="stats-marquee">
+            <div class="stats-marquee-content">
+              <div class="stat-card">
+                <div class="stat-number">3,000+</div>
+                <div class="stat-label">Happy Clients</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Team Members</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">5,00,000+</div>
+                <div class="stat-label">Media Options</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">1,50,000+</div>
+                <div class="stat-label">Campaigns Executed</div>
+              </div>
+            </div>
+            <!-- Duplicate for seamless loop -->
+            <div class="stats-marquee-content">
+              <div class="stat-card">
+                <div class="stat-number">3,000+</div>
+                <div class="stat-label">Happy Clients</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Team Members</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">5,00,000+</div>
+                <div class="stat-label">Media Options</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">1,50,000+</div>
+                <div class="stat-label">Campaigns Executed</div>
+              </div>
+            </div>
           </div>
         </div>
 
