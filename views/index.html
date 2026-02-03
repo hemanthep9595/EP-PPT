@@ -8,7 +8,9 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@300;400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@300;400;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
@@ -58,7 +60,7 @@
 
 
     .left-panel {
-      background: linear-gradient(165deg, #1a1214 0%, #0d0d0d 100%);
+      background: linear-gradient(165deg, #c01625 0%, #a01220 100%);
       position: relative;
       overflow: hidden;
     }
@@ -71,8 +73,8 @@
       right: 0;
       bottom: 0;
       background:
-        radial-gradient(ellipse 100% 100% at 0% 0%, rgba(192, 22, 37, 0.15) 0%, transparent 50%),
-        radial-gradient(ellipse 80% 80% at 100% 100%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+        radial-gradient(ellipse 100% 100% at 0% 0%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 80% 80% at 100% 100%, rgba(0, 0, 0, 0.15) 0%, transparent 50%);
       z-index: 0;
     }
 
@@ -83,7 +85,7 @@
       right: 0;
       width: 1px;
       height: 100%;
-      background: linear-gradient(180deg, transparent, rgba(255,255,255,0.08), transparent);
+      background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.08), transparent);
     }
 
     .left-content {
@@ -117,6 +119,30 @@
       overflow: hidden;
       mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
       -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      position: relative;
+    }
+
+    .stats-marquee-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+      animation: shimmer 4s ease-in-out infinite;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    @keyframes shimmer {
+      0% {
+        left: -60%;
+      }
+
+      100% {
+        left: 100%;
+      }
     }
 
     .stats-marquee {
@@ -136,13 +162,18 @@
     }
 
     @keyframes marquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
     }
 
     .stat-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 12px;
       padding: 16px 20px;
       min-width: 140px;
@@ -151,16 +182,17 @@
     }
 
     .stat-number {
+      font-family: 'Averia Serif Libre', Georgia, serif;
       font-size: 24px;
       font-weight: 700;
-      color: #e8d5a3;
+      color: #f5e6c8;
       line-height: 1.2;
     }
 
     .stat-label {
       font-size: 11px;
       font-weight: 500;
-      color: rgba(255, 255, 255, 0.5);
+      color: rgba(255, 255, 255, 0.75);
       margin-top: 4px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -241,6 +273,7 @@
         opacity: 0;
         transform: translateY(-8px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -431,8 +464,13 @@
     }
 
     @keyframes popIn {
-      from { transform: scale(0); }
-      to { transform: scale(1); }
+      from {
+        transform: scale(0);
+      }
+
+      to {
+        transform: scale(1);
+      }
     }
 
     .channel-card .icon {
@@ -707,15 +745,24 @@
         opacity: 0;
         transform: translateY(20px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
 
-    .delay-1 { animation-delay: 0.1s; }
-    .delay-2 { animation-delay: 0.2s; }
-    .delay-3 { animation-delay: 0.3s; }
+    .delay-1 {
+      animation-delay: 0.1s;
+    }
+
+    .delay-2 {
+      animation-delay: 0.2s;
+    }
+
+    .delay-3 {
+      animation-delay: 0.3s;
+    }
 
     /* Scroll reveal - simpler */
     .reveal-on-scroll {
@@ -733,8 +780,13 @@
     }
 
     @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     .success-checkmark {
@@ -742,8 +794,15 @@
     }
 
     @keyframes scaleIn {
-      from { opacity: 0; transform: scale(0.5); }
-      to { opacity: 1; transform: scale(1); }
+      from {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     .section-divider {
@@ -1176,7 +1235,8 @@
     <aside class="left-panel w-full lg:w-[420px] xl:w-[520px] flex-shrink-0 p-8 lg:p-10">
       <div class="left-content">
         <div class="animate-in mb-10">
-          <img src="/ep-new-logo.png" alt="Excellent Publicity" class="h-12 md:h-40 mx-auto" style="filter: brightness(0) invert(1);">
+          <img src="/ep-new-logo.png" alt="Excellent Publicity" class="h-12 md:h-40 mx-auto"
+            style="filter: brightness(0) invert(1);">
         </div>
 
         <div class="animate-in delay-1 mb-8">
@@ -1349,16 +1409,19 @@
                   <div id="productGroupLocked" class="product-group-locked">
                     <div class="locked-icon-box">
                       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                       </svg>
                     </div>
                     <div class="locked-content">
                       <span class="locked-title">Select an Industry First</span>
-                      <span class="locked-desc">Product groups are categorized by industry. Pick your industry above to unlock this field.</span>
+                      <span class="locked-desc">Product groups are categorized by industry. Pick your industry above to
+                        unlock this field.</span>
                     </div>
                     <div class="locked-arrow">
                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M7 11l5-5m0 0l5 5m-5-5v12" />
                       </svg>
                     </div>
                   </div>
@@ -1368,7 +1431,8 @@
                     <div class="product-group-header">
                       <div class="industry-badge" id="selectedIndustryBadge">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                         </svg>
                         <span id="industryBadgeText">Industry</span>
                       </div>
@@ -1381,7 +1445,8 @@
                           placeholder="Search and add product groups...">
                         <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
                           <svg class="w-4 h-4 text-text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                           </svg>
                         </div>
                       </div>
@@ -1681,7 +1746,8 @@
               </svg>
             </div>
             <h3 class="text-2xl font-bold text-gray-900 mb-3">Thank You!</h3>
-            <p class="text-gray-600 mb-6 max-w-sm mx-auto">Your campaign brief has been submitted. Our team will get back to you within 24 hours.</p>
+            <p class="text-gray-600 mb-6 max-w-sm mx-auto">Your campaign brief has been submitted. Our team will get
+              back to you within 24 hours.</p>
             <button onclick="resetForm()" class="text-primary font-medium hover:underline underline-offset-4">
               Submit another brief
             </button>
