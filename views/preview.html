@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download Presentation - Excellent Publicity</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'DM Sans', system-ui, sans-serif; }
+    .download-btn {
+      background: linear-gradient(135deg, #c01625 0%, #8a0f1a 100%);
+      transition: all 0.3s ease;
+    }
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(192, 22, 37, 0.4);
+    }
+    .download-btn:disabled { opacity: 0.7; transform: none; box-shadow: none; }
+    .loader {
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #c01625;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      animation: spin 1s linear infinite;
+      display: inline-block;
+    }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center p-6">
+  <div class="bg-white rounded-2xl shadow-lg max-w-lg w-full p-8">
+
+    <!-- Loading -->
+    <div id="loadingState" class="text-center py-8">
+      <div class="loader mx-auto mb-4" style="width:40px;height:40px;"></div>
+      <p class="text-gray-500">Loading campaign data...</p>
+    </div>
+
+    <!-- Content -->
+    <div id="content" class="hidden">
+      <div class="text-center mb-6">
+        <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+          <svg class="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+          </svg>
+        </div>
+        <h1 class="text-2xl font-bold text-gray-900">Campaign Brief Submitted</h1>
+        <p class="text-gray-500 mt-1">Your presentation is ready to download</p>
+      </div>
+
+      <!-- Summary -->
+      <div class="bg-gray-50 rounded-xl p-5 mb-6 space-y-2 text-sm">
+        <div class="flex justify-between"><span class="text-gray-500">Brand</span><span id="sBrand" class="font-medium text-gray-900"></span></div>
+        <div class="flex justify-between"><span class="text-gray-500">Industry</span><span id="sIndustry" class="font-medium text-gray-900"></span></div>
+        <div class="flex justify-between"><span class="text-gray-500">Target Audience</span><span id="sAudience" class="font-medium text-gray-900"></span></div>
+        <div class="flex justify-between"><span class="text-gray-500">Channels</span><span id="sChannels" class="font-medium text-gray-900"></span></div>
+        <div class="flex justify-between"><span class="text-gray-500">Regions</span><span id="sRegions" class="font-medium text-gray-900 text-right max-w-[200px]"></span></div>
+      </div>
+
+      <!-- Download -->
+      <button id="downloadBtn" class="download-btn w-full text-white font-semibold py-4 px-6 rounded-xl flex items-center justify-center gap-3">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+        </svg>
+        <span id="btnText">Download Presentation (.pptx)</span>
+      </button>
+
+      <div class="text-center mt-6">
+        <a href="/" class="text-sm text-gray-500 hover:text-gray-800 transition-colors">← Create another campaign</a>
+      </div>
+    </div>
+
+    <!-- Error -->
+    <div id="errorState" class="hidden text-center py-8">
+      <div class="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
+        <svg class="w-7 h-7 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </div>
+      <h2 class="text-xl font-bold text-gray-900 mb-1">Something went wrong</h2>
+      <p id="errorMsg" class="text-gray-500 mb-4"></p>
+      <a href="/" class="text-red-600 font-medium">← Go back</a>
+    </div>
+  </div>
+
+  <script>
+    const campaignId = new URLSearchParams(window.location.search).get('id');
+    let campaignData = null;
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      if (!campaignId) return showError('No campaign ID');
+      try {
+        const res = await fetch('/api/campaign-brief/' + campaignId);
+        const result = await res.json();
+        if (!result.success) return showError(result.message);
+        campaignData = result.data;
+
+        document.getElementById('sBrand').textContent = campaignData.brandName;
+        document.getElementById('sIndustry').textContent = campaignData.industry;
+        document.getElementById('sAudience').textContent =
+          (campaignData.targetGender || 'All') + ', Age ' + (campaignData.targetAgeMin || 18) + '-' + (campaignData.targetAgeMax || 65);
+        document.getElementById('sChannels').textContent = (campaignData.primaryChannels || []).join(', ');
+        document.getElementById('sRegions').textContent = (campaignData.keyRegions || []).join(', ') || 'Pan India';
+
+        document.getElementById('loadingState').classList.add('hidden');
+        document.getElementById('content').classList.remove('hidden');
+      } catch (e) {
+        showError('Failed to load campaign data');
+      }
+    });
+
+    document.getElementById('downloadBtn').addEventListener('click', async function () {
+      const btn = this;
+      btn.disabled = true;
+      document.getElementById('btnText').textContent = 'Generating...';
+      try {
+        const res = await fetch('/api/generate-ppt/' + campaignId, { method: 'POST' });
+        if (!res.ok) throw new Error('Failed');
+        const blob = await res.blob();
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = campaignData.brandName + '_Campaign.pptx';
+        a.click();
+        URL.revokeObjectURL(a.href);
+      } catch (e) {
+        alert('Failed to generate. Please try again.');
+      } finally {
+        btn.disabled = false;
+        document.getElementById('btnText').textContent = 'Download Presentation (.pptx)';
+      }
+    });
+
+    function showError(msg) {
+      document.getElementById('loadingState').classList.add('hidden');
+      document.getElementById('errorState').classList.remove('hidden');
+      document.getElementById('errorMsg').textContent = msg;
+    }
+  </script>
+</body>
+</html>

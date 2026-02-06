@@ -2465,8 +2465,8 @@
         const result = await response.json();
 
         if (result.success) {
-          form.classList.add('hidden');
-          successMessage.classList.remove('hidden');
+          // Redirect to preview page with campaign ID
+          window.location.href = `/preview?id=${result.data.id}`;
         } else {
           showError(result.errors ? result.errors.join(', ') : result.message);
         }

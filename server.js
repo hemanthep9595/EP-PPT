@@ -1,4 +1,9 @@
 require('dotenv').config();
+const dns = require('dns');
+
+// Force Node.js to use Google DNS for MongoDB SRV resolution
+dns.setServers(['8.8.8.8', '8.8.4.4']);
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -23,6 +28,11 @@ app.use('/api', apiRoutes);
 // Serve landing page
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'index.html'));
+});
+
+// Serve preview page
+app.get('/preview', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'preview.html'));
 });
 
 // Connect to MongoDB
